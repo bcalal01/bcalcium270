@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>I Love Websites</title>
+<style type ="text/css">
+html,body {font-size: 26px;}
+body {
+    background-image: url(dirt3.jpg);
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    background-position-x: center;
+}
+h1 {
+    background-color: rgb(33, 145, 160);
+    padding: 30px;
+    margin: -8px;
+    margin-bottom: 0px;
+    color: rgb(252, 247, 241);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+ul#nav {list-style-type: none;
+    font-size: 22px;
+    text-align: center;
+    padding: 20px; margin: -8px;
+    background-color: rgb(255, 255, 255);
+}
+ul#nav a {text-decoration: none;
+    color: rgb(159, 124, 19);
+    padding: 2px 0px;
+    width: 160px;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ul#nav a:hover {color: rgb(221, 203, 176);
+    text-decoration: underline;}
+ul#nav li {display: inline-block;}
+
+#missionStatement {
+    color: #ffffff;
+    text-align: center;
+    font-size: 60px;
+    margin-top: 275px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+@media (max-width:1000px)
+{
+body { 
+    background-position-x: center;
+    background-size: auto, 100%;
+}
+#missionStatement {
+    font-size: 40px;
+}
+
+}
+
+@media (max-width:700px)
+{
+ul#nav a {text-decoration: none;
+    padding: 2px 20px;
+    padding-top: 15px;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+}
+h1 {
+    font-size: 30px;
+}
+div#missionStatement {
+    font-size: 30px;
+}
+body { 
+    background-image: url(dirtmobile.jpg);
+    background-position-x: center;
+    background-size: 100%;
+}
+
+}
+
+
+
+
+</style>
+</head>
+<body>
+    <h1>Big Mike's Dirt in Bulk</h1>
+
+    <ul id="nav">
+        <li><a href='#'>Home</a></li>
+        <li><a href='#'>Products</a></li>
+        <li><a href='#'>Contact</a></li>
+        
+        </ul>
+
+    <div id="missionStatement">
+        Bringing you the highest <br>
+        quality dirt for the lowest prices
+    </div>
+</body>
+</html>
