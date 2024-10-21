@@ -44,8 +44,6 @@
     <script>
         const canvas = document.getElementById('drawingCanvas');
         const ctx = canvas.getContext('2d');
-        const clearButton = document.getElementById('clear');
-        const colorButton = document.getElementById('color');
 
         let painting = false;
         let currentColor = '#000000';
@@ -94,15 +92,7 @@
         canvas.addEventListener('mouseup', endPosition);
         canvas.addEventListener('touchend', endPosition);
 
-        // Clear the canvas
-        clearButton.addEventListener('click', () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        });
-
-        // Change color of the drawing
-        colorButton.addEventListener('click', () => {
-            currentColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random color
-        });
+       
     </script>
 
 </body>
