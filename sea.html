@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mobile Drawing App</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            border: 2px solid #000;
+            background-color: #fff;
+        }
+
+        .tools {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tools button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tools">
+        <button id="clear">Clear</button>
+        <button id="color">Change Color</button>
+    </div>
+
+    <canvas id="drawingCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+        const clearButton = document.getElementById('clear');
+        const colorButton = document.getElementById('color');
+
+        let painting = false;
+        let currentColor = '#000000';
+
+        // Resize the canvas to fit the screen
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Start drawing
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+
+        // End drawing
+        function endPosition() {
+            painting = false;
+            ctx.beginPath(); // Prevents continuous lines
+        }
+
+        // Drawing function
+        function draw(e) {
+            if (!painting) return;
+
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = currentColor;
+
+            ctx.lineTo(e.touches ? e.touches[0].clientX : e.clientX, e.touches ? e.touches[0].clientY : e.clientY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.touches ? e.touches[0].clientX : e.clientX, e.touches ? e.touches[0].clientY : e.clientY);
+        }
+
+        // Event listeners for drawing
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('touchstart', startPosition);
+
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchmove', draw);
+
+        canvas.addEventListener('mouseup', endPosition);
+        canvas.addEventListener('touchend', endPosition);
+
+        // Clear the canvas
+        clearButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // Change color of the drawing
+        colorButton.addEventListener('click', () => {
+            currentColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random color
+        });
+    </script>
+
+</body>
+</html>
