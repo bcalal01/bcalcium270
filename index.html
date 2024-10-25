@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
+
+        <style type ="text/css">
+            .banner {
+                background-color: #ff0000;
+                height: 465px;
+                background-position: center top;
+                padding-top: 10px;
+                margin-bottom: 50px;
+            }
+
+            .banner #home-cta {
+                font-size: 65px;
+                padding: 20px;
+                text-align: center;
+                width: 700px;
+                color: #D0894B;
+                background-color: #ffffff;
+                margin-left: 60px;
+                margin-top: 185px;
+                margin-bottom: 0px;
+                font-family: "Red Hat Display", sans-serif;
+            }
+
+            .banner #home-banner-btn {
+                background-color: #2B4753;
+                text-align: center;
+                width: 280px;
+                font-size: 30px;
+                color: #ffffff;
+                border-radius: 30px;
+                padding: 12px 0px;
+                margin-top: 20px;
+                margin-left: 265px;
+            }
+
+            .banner a {
+                text-decoration: none;
+            }
+
+            .banner #home-banner-btn:hover {
+                color: #D9B45D;
+                background-color: #253542;
+            }
+
+
+            h2 {
+                font-size: 35px;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            main .image {
+                margin: 0px 40px 10px 40px;
+                float: left;
+            }
+
+            main #content {
+                width: 60%;
+                display: inline-block;
+                margin: 20px 60px 0px 0px;
+                padding: 0px 30px;
+                font-size: 26px;
+            }
+
+            .section-heading {
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+
+            p {
+                width: 90%;
+                font-size: 25px;
+                margin: auto;
+                margin-bottom: 30px;
+            }
+
+
+            @media (max-width:850px) {
+                .banner #home-cta {
+                    font-size: 50px;
+                    width: fit-content;
+                    margin: auto;
+                    margin-top: 185px;
+                }
+
+                .banner #home-banner-btn {
+                    margin: auto;
+                    margin-top: 20px;
+                }
+            }
+
+            @media (max-width:800px) {
+                main .image {
+                    float: none;
+                    margin: auto;
+                }
+            }
+
+            @media (max-width:550px) {
+                .banner #home-cta {
+                    font-size: 40px;
+                }
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html"><img src="logo.png" id="nav-logo"/></a>
+            
+            <nav id="nav">
+                <ul>
+                    <a href="about.html"><li>About Us</li></a>
+                    <a href="services.html"><li>Services</li></a>
+                    <a href="ordering.html"><li>Ordering</li></a>
+                    <a href="contact.html"><li>Contact Us</li></a>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="banner" id="banner-home">
+            <h1 id="home-cta">Rent a penguin now!</h1>
+            <a href="ordering.html">
+                <div id="home-banner-btn">
+                    Ordering
+                </div>
+            </a>
+        </div>
+
+        <main>
+            <div class="main-series">
+                <div class="image">
+                    <img src="FILL ME"/>
+                </div>
+                    <h2 class="section-heading">
+                        Your chill companions on demand
+                    </h2>
+                    <p>
+                        Ever dreamed of hanging out with a penguin? At The Penguin Company, we make that dream a
+                        reality! We provide a unique experience where you can rent adorable penguins for a fun-filled
+                        day. Whether you're hosting an event, planning a cozy hangout, or just want to enjoy some
+                        quality time with these charming birds, we've got you covered. Our penguins are friendly,
+                        playful, and always ready to bring a splash of joy into your life.
+                    </p>
+                    <p style="text-align: center;">
+                        Book a penguin (or penguins) today and get ready for a cool adventure like no other!
+                    </p>
+            </div>
+
+            <div class="main-series">
+                <img src="FILL ME"/>
+                <div>
+                    <p class="section-heading">
+                        FILL ME
+                    </p>
+                    <p>
+                        FILL ME
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <div style="width: 100%; height: 5px"></div>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul id="top-row">
+                    <a href="index.html"><li>Home</li></a>
+                    <a href="about.html"><li>About Us</li></a>
+                    <a href="services.html"><li>Services</li></a>
+                    <a href="ordering.html"><li>Ordering</li></a>
+                </ul>
+                <ul id="bottom-row">
+                    <a href="penguins.html"><li>About Penguins</li></a>
+                    <a href="safety.html"><li>Penguin Safety Instructions</li></a>
+                    <a href="contact.html"><li>Contact Us</li></a>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>
