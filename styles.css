@@ -32,7 +32,7 @@ header #nav {
 header #nav ul {
     list-style-type: none;
     padding: 0px;
-    margin-left: -60px;
+    margin-left: -40px;
 
 }
 
@@ -58,6 +58,7 @@ h1 {
     text-align: center;
     color: #D0894B;
     font-family: "Red Hat Display";
+    padding: 0px 30px
 }
 
 footer {
@@ -101,6 +102,14 @@ footer #footer-nav ul a:hover {
     width: 400px;
     height: 250px;
     border-radius: 30px;
+}
+
+.main-series p {
+    line-height: 1.5;
+}
+
+.main-series {
+    margin-bottom: 40px;
 }
 
 @media (max-width:1370px) {
