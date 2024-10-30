@@ -251,8 +251,12 @@ h2 {
         width: 70px;
     }
 
+    header #nav ul li {
+        width: 136px;
+    }
+
     header #nav ul {
         margin: 0px;
-        width: 287px;
+        width: 280px;
     }
 }
