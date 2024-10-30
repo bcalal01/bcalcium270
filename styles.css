@@ -242,7 +242,17 @@ h2 {
 }
 
 @media (max-width:470px) {
+    header {
+        height: 90px;
+    }
+
     header #nav-logo {
         margin: 10px;
+        width: 70px;
+    }
+
+    header #nav ul {
+        margin: 0px;
+        width: 287px;
     }
 }
