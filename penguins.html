@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
+
+        <style>
+
+            .main-series .mobile {
+                display: none;
+            }
+
+            .main-series #image-column-mobile{
+                display: none;
+            }
+
+            #image-column {
+                float: left;
+                margin-top: -30px;
+                margin-right: 50px;
+            }
+
+            #image-column img {
+                display: block;
+                margin: 40px 0px;
+            }
+
+            .main-series img {
+                margin-left: 50px;
+            }
+
+            .main-series ul {
+                margin: 0px;
+                font-size: 22px;
+                line-height: 1.5;
+            }
+
+            @media (max-width:900px) {
+
+                .main-series ul {
+                    margin-bottom: 25px;
+                }
+
+                h1{
+                    margin-bottom: -20px;
+                }
+
+                .main-series .full-screen {
+                    display: none;
+                }
+
+                .main-series .mobile {
+                    display: block;
+                    margin: auto;
+                }
+
+                .main-series #image-column-mobile{
+                    display: block;
+                    width: fit-content;
+                    margin: auto;
+                }
+
+                .main-series #image-column-mobile img{
+                    display: inline-block;
+                    width: 260px;
+                    margin: 0px 20px 0px 20px;
+                }
+            }
+
+            @media (max-width:760px) {
+                .main-series #image-column-mobile img {
+                    display: inline-block;
+                    width: 200px;
+                }
+
+                .main-series .mobile {
+                    width: 70%;
+                }
+            }
+
+            @media (max-width:610px) {
+                .main-series #image-column-mobile img {
+                display: block;
+                margin: 20px;
+                }
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
+            
+            <nav id="nav">
+                <ul>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>
+                About Penguins
+            </h1>
+
+            <div class="main-series">
+                <img src="Images/About Penguins Page/Penguin Pair Small.jpg" id="FILL ME" class="full-screen" style="float: right;"/>
+                <p style="padding-top: 50px;">
+                    Penguins are flightless seabirds known for their distinctive black-and-white coloring and upright
+                    waddle. Penguins are expert swimmers, using their wings like flippers to navigate through oceans in
+                    search of fish, krill, and other marine life. They thrive in some of the world's harshest
+                    environments, but those environments are now under threat.
+                </p>
+
+                <img src="Images/About Penguins Page/Penguin Pair Small.jpg" id="FILL ME" class="mobile"/>
+            </div>
+
+            <br clear="all" />
+
+            <div class="main-series">
+
+                <div class="full-screen" id="image-column">
+                    <img src="Images/About Penguins Page/Pollution Penguin Sad Small.jpg" id="FILL ME" />
+                    <img src="Images/About Penguins Page/Penguin Colony Small.jpg" id="FILL ME" />
+                </div>
+
+                <h2 class="section-heading">Penguin conservation</h2>
+                <p>
+                    Penguins face numerous threats to their survival, with climate change, overfishing, and habitat
+                    destruction among the most significant challenges. Melting sea ice in Antarctica reduces hunting
+                    grounds for penguins that rely on fish and krill, while warming ocean temperatures disrupt their
+                    food sources.
+                </p>
+                <p>
+                    Additionally, oil spills and plastic pollution pose ongoing risks to their habitats. Conservation
+                    efforts focus on protecting marine reserves, regulating fishing practices, and reducing carbon
+                    emissions to preserve the delicate ecosystems penguins depend on.
+                </p>
+                <p>
+                    The Penguin Company advocates for marine protected areas, raises awareness about the impacts of
+                    climate change, and promotes responsible tourism that doesn't harm penguin colonies. Our ongoing
+                    research also plays a vital role in understanding how penguins adapt to environmental changes, which
+                    is essential for creating effective long-term conservation strategies.
+                </p>
+
+                <div id="image-column-mobile">
+                    <img src="Images/About Penguins Page/Pollution Penguin Sad Small.jpg" id="FILL ME" />
+                    <img src="Images/About Penguins Page/Penguin Colony Small.jpg" id="FILL ME" />
+                </div>
+
+            
+            </div>
+
+            <br clear="all" />
+
+            <div class="main-series">
+
+                <h2 class="section-heading">Penguin fun facts</h2>
+
+                <img src="Images/About Penguins Page/Swimming Penguin Small.jpg" id="FILL ME" class="full-screen" style="float: right;"/>
+
+                <ul>
+                    <li>
+                        Penguins are incredibly agile in water, reaching speeds of up to 15 miles per hour when swimming.
+                    </li>
+                    <li>
+                        Penguins' black-and-white plumage serves as camouflage while they hunt. The dark back blends
+                        with the ocean depths when viewed from above, and their white belly matches the bright surface
+                        when seen from below.
+                    </li>
+                    <li>
+                        Emperor penguins can dive deeper than any other bird, reaching depths of over 1,800 feet (550
+                        meters) in search of food, and can stay submerged for up to 20 minutes!
+                    </li>
+                    <li>
+                        Each penguin has a unique call, allowing them to identify their mates and chicks in noisy
+                        colonies.
+                    </li>
+                    <li>
+                        Some penguins live in warm climates. While we often associate penguins with icy environments,
+                        species like the African penguin and Galápagos penguin live in much warmer areas.
+                    </li>
+                </ul>
+
+                <img src="Images/About Penguins Page/Swimming Penguin Small.jpg" id="FILL ME" class="mobile"/>
+            </div>
+        </main>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

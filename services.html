@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>The Penguin Company</title>
         <meta charset="utf-8" />
@@ -9,15 +9,8 @@
 
         <style>
 
-            h1 {
-                margin: 180px 0px 25px 0px;
-                font-size: 65px;
-                text-align: center;
-                color: #D0894B;
-                font-family: "Red Hat Display";
-            }
-
             #services-order-btn {
+                display: inline-block;
                 text-align: center;
                 background-color: #2B4753;
                 width: 285px;
@@ -44,7 +37,12 @@
                 display: flex;
                 width: 90%;
                 margin: auto;
-                margin-bottom: 100px;
+                margin-bottom: 40px;
+            }
+
+            #menu img{
+                width: 100%;
+                border-radius: 30px;
             }
 
             .column {
@@ -52,8 +50,8 @@
             }
 
             .package {
-                padding: 30px;
-                height: 430px;
+                padding: 0px 30px;
+                min-height: 770px;
             }
 
             .package-name {
@@ -73,6 +71,7 @@
                 font-family: "Ubuntu";
                 font-size: 22px;
                 padding-left: 10px;
+                line-height: 1.4;
             }
 
             @media (max-width:1275px) {
@@ -84,10 +83,22 @@
                 .package-desc-list {
                     font-size: 19px;
                 }
+
+                .package {
+                    min-height: 700px;
+                }
+            }
+
+            @media (max-width:1110px) {
+
+                .package {
+                    min-height: 770px;
+                }
             }
 
             @media (max-width:1000px) {
                 .package { 
+                    min-height: 0px;
                     height: auto;
                     padding: 5px 30px;
                 }
@@ -104,6 +115,12 @@
                 .package-name {
                 text-align: center;
                 }
+
+                #menu img{
+                    display: block;
+                    width: 70%;
+                    margin: auto;
+                }
             }
 
 
@@ -112,14 +129,14 @@
     
     <body>
         <header>
-            <a href="index.html"><img src="logo.png" id="nav-logo"/></a>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
             
             <nav id="nav">
                 <ul>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </header>
@@ -130,17 +147,20 @@
             </h1>
 
             
-            <a href="ordering.html">
-                <div id="services-order-btn">
-                    Order NOW!
-                </div>
-            </a>
+            <div style="display: flex; justify-content: center;">
+                <a href="ordering.html">
+                    <div id="services-order-btn">
+                        Order Now!
+                    </div>
+                </a>
+            </div>
 
             <div id="menu">
             <div class="column">
                 <div class="package">
                     <p class="package-name">Penguin Playdate Package</p>
                     <p class="package-short-desc">Perfect for a casual hangout with a penguin pal!</p>
+                    <img src="Images/Services Page/Penguin Playdate Small.jpg">
                     <ul class="package-desc-list">
                         <li>2-hour rental with one friendly penguin</li>
                         <li>Personal penguin handler to assist</li>
@@ -151,6 +171,7 @@
                 <div class="package">
                     <p class="package-name">Party with Penguins Package</p>
                     <p class="package-short-desc">Bring the charm of penguins to your next event!</p>
+                    <img src="Images/Services Page/Penguin Party Small.jpg">
                     <ul class="package-desc-list">
                         <li>4-hour rental with two playful penguin</li>
                         <li>Interactive games and activities with the penguins</li>
@@ -164,6 +185,7 @@
                 <div class="package">
                     <p class="package-name">Penguin Adventure Day</p>
                     <p class="package-short-desc">An all-day experience for true penguin lovers!</p>
+                    <img src="Images/Services Page/Penguin Adventure Small.jpg">
                     <ul class="package-desc-list">
                         <li>Full-day rental with up to three penguins</li>
                         <li>Guided penguin play sessions and feeding times</li>
@@ -175,6 +197,7 @@
                 <div class="package">
                     <p class="package-name">Corporate Penguin Chill Package</p>
                     <p class="package-short-desc">Boost your team's morale with the coolest team-building activity!</p>
+                    <img src="Images/Services Page/Corporate Penguins Small.jpg">
                     <ul class="package-desc-list">
                         <li>3-hour rental with two penguins for the office</li>
                         <li>Relaxation sessions with penguins to reduce stress</li>
@@ -184,33 +207,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="column">
-                <div class="package">
-                    <p class="package-name">Penguin Photo Experience</p>
-                    <p class="package-short-desc">Create lifelong memories with your penguin pals!</p>
-                    <ul class="package-desc-list">
-                        <li>1-hour rental with one penguin, designed for photo shoots</li>
-                        <li>Professional photographer included</li>
-                        <li>Penguin costumes and props available</li>
-                        <li>Perfect for family portraits, engagement shoots, or social media content</li>
-                    </ul>
-                </div>
-            </div>
-            </div>
         </main>
 
         <footer>
             <nav id="footer-nav">
-                <ul id="top-row">
-                    <a href="index.html"><li>Home</li></a>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                </ul>
-                <ul id="bottom-row">
-                    <a href="penguins.html"><li>About Penguins</li></a>
-                    <a href="safety.html"><li>Penguin Safety Instructions</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </footer>

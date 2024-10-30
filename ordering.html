@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
+
+        <style>
+            .accent-text {
+                color: #ff0000;
+            }
+
+            #order {
+                width: 70%;
+                margin-left: 18%;
+                margin-top: -25px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            #order p {
+                margin-left: 5%;
+            }
+
+            #order .form-section {
+                margin: 60px 0px 30px 0px;
+            }
+
+            #order label{
+                font-size: 25px;
+                margin-bottom: 20px;
+                font-weight: bold;
+                display: block;
+            }
+
+            #order label select{
+                width: 91%;
+                height: 55px;
+                padding: 5px;
+                font-size: 20px;
+                margin-top: 15px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            #order label input{
+                width: 91%;
+                height: 40px;
+                padding: 5px;
+                font-size: 20px;
+                margin-top: 15px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            #order label textarea{
+                display: block;
+                margin-top: 20px;
+                width: 91%;
+                height: 150px;
+                padding: 5px;
+                font-size: 15px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            #order input[type=submit] {
+                display: inline-block;
+                background-color: #2B4753;
+                text-align: center;
+                width: 280px;
+                font-size: 30px;
+                color: #ffffff;
+                border-radius: 30px;
+                padding: 12px 0px;
+                margin: 0 auto 0 auto;
+                margin-bottom: 20px;
+                font-family: "Ubuntu", sans-serif;
+                border: 0;
+            }
+            
+            #order input[type=submit]:hover {
+                color: #D9B45D;
+                background-color: #253542;
+                cursor: pointer;
+            }
+
+            @media (max-width:1005px) {
+                #order p {
+                    margin-left: 0;
+                }
+
+                #order label input{
+                    margin-left: auto;
+                }
+
+                #order label input{
+                    width: 90%;
+                } 
+                
+                #order label select{
+                    width: 90%;
+                }
+
+                #order label textarea{
+                    width: 90%;
+                }
+
+                #order #add2-input {
+                    margin-left: 0px;
+                }
+
+                #order #add3-input {
+                    margin-left: 0px;
+                }
+            }
+
+        </style>
+        <script>
+            function submissionAlert()
+            {
+                alert("Your request for rental has been received! Please check your email for a receipt.");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
+            
+            <nav id="nav">
+                <ul>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <main>
+            <h1>Ordering</h1>
+            <form id="order">
+                <h2 class="form-section">Contact information</h2>
+                <label>
+                    First name<span class="accent-text">*</span>
+                    <input type="text" name="fname" id="fname-input" required/>
+                </label>
+                <label>
+                    Last name<span class="accent-text">*</span>
+                    <input type="text" name="lname" id="lname-input" required/>
+                </label>
+                <label>
+                    Phone number<span class="accent-text">*</span>
+                    <input type="tel" name="phone" id="phone-input" required/>
+                </label>
+                <label>
+                    Email address<span class="accent-text">*</span>
+                    <input type="email" name="email" id="email-input" required/>
+                </label>
+                <label>
+                    Address<span class="accent-text">*</span>
+                    <input type="text" name="add1" id="add1-input" required/>
+                    <input type="text" name="add2" id="add2-input"/>
+                    <input type="text" name="add3" id="add3-input"/>
+                </label>
+                <label>
+                    State<span class="accent-text">*</span><br />
+                    <input type="text" name="state" id="state-input" required/>
+                </label>
+                <label>
+                    Zip code<span class="accent-text">*</span>
+                    <input type="text" name="zip" id="zip-input" required />
+                </label>
+                <p class="info">The Penguin Company provides services in the continental United States only.</p>
+
+                <h2 class="form-section">Rental information</h2>
+                <label>
+                    Rental date<span class="accent-text">*</span>
+                    <input type="date" name="date" id="date-input" required/>
+                </label>
+                <p class="info">Rentals must be placed at least 24 hours in advance.</p>
+                <label>
+                    Rental time<span class="accent-text">*</span>
+                    <input type="time" name="time" id="time-input" min="09:00"
+                           max="17:00" step="1800" required/>
+                    <!-- step 900 means increments of 30 mins -->
+                </label>
+                <p class="info">Rentals may be booked between 09:00/9 AM and 17:00/5 PM, on the hour or half hour.</p>
+                <label>
+                    Desired package<span class="accent-text">*</span>
+                    <select name="pkg" id="pkg-sel" required>
+                        <option value="">Choose a package</option>
+                        <option value="playdate">Penguin playdate</option>
+                        <option value="party">Party with penguins</option>
+                        <option value="adventure">Penguin adventure day</option>
+                        <option value="corporate">Corporate penguin chill</option>
+                        <option value="photo">Penguin photo experience</option>
+                    </select>
+                </label>
+                <label>
+                    Special instructions (optional)
+                    <textarea name="instr" id="instr-area" rows="4" cols="30"></textarea>
+                </label>
+                <input type="submit" id="order-submit" value="Submit order"/>
+            </form>
+        </main>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+
+        <script>
+            const validate = (event) => {
+                const form = new FormData(document.getElementById("order"));
+                const phone = form.get("phone");
+                const zip = form.get("zip");
+                const date = new Date(form.get("date"));
+                const currentDate = Date.now();
+                
+                const phonePattern = /^\(?[0-9]{3}\)?[ \-]?[0-9]{3}[ \-]?[0-9]{4}$/;
+                if(!phonePattern.test(phone)) {
+                    alert("Please provide a valid phone number.");
+                    event.preventDefault();
+                    return;
+                }
+
+                const zipPattern = /^\d{5}(?:[-\s]\d{4})?$/;
+                if(!zipPattern.test(zip)) {
+                    alert("Please provide a valid zip code.");
+                    event.preventDefault();
+                    return;
+                }
+
+                if(Math.floor((date - currentDate) / 1000 / 60 / 60 / 24) < 1) {
+                    alert("Please provide a valid date.");
+                    event.preventDefault();
+                    return;
+                }
+
+                submissionAlert();
+            };
+
+            window.addEventListener("load", () => {
+                const form = document.getElementById("order");
+                form.addEventListener("submit", validate);
+            });
+        </script>
+    </body>
+</html>

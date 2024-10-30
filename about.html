@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>The Penguin Company</title>
         <meta charset="utf-8" />
@@ -10,7 +10,7 @@
         <style>
 
             #image-column {
-                margin: -70px 40px;
+                margin: -70px 0px -70px 50px;
                 float: right;
                 width: fit-content;
             }
@@ -21,20 +21,15 @@
                 display: none
             }
 
-            .image {
-                margin: 70px 20px;
+            #image-column img {
+                margin: 70px 0px;
+                display: block;
             }
 
             p {
-                width: 90%;
-                font-size: 25px;
-                margin: auto;
-                line-height: 1.5;
-            }
 
-            h2 {
-                font-size: 40px;
-                margin: 40px 40px 20px 40px;
+                font-size: 25px;
+                line-height: 1.5;
             }
 
             @media (max-width:900px) {
@@ -45,31 +40,28 @@
                 #image-column-mobile {
                     display: block
                 }
-                .image {
+                
+                .main-series img {
                 display: inline-block;
-                width: 300px;
-                height: 187px;
-                margin: 20px;
+                width: 270px;
+                margin: 0px 20px 20px 20px;
                 }
                 .main-series {
                     margin-bottom: 0px;
                 }
             }   
 
-            @media (max-width:700px) {
-                .image {
+            @media (max-width:780px) {
+                .main-series img {
                 display: inline-block;
                 width: 200px;
-                height: 125px;
                 margin: 20px;
                 }
             }
 
-            @media (max-width:500px) {
-                .image {
+            @media (max-width:610px) {
+                .main-series img {
                 display: block;
-                width: 300px;
-                height: 187px;
                 }
             }
 
@@ -79,14 +71,14 @@
     
     <body>
         <header>
-            <a href="index.html"><img src="logo.png" id="nav-logo"/></a>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
             
             <nav id="nav">
                 <ul>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </header>
@@ -97,7 +89,7 @@
             </h1>
 
             <div class="main-series">
-                <h2 class="section-heading">Our mission</h2>
+                <h2 class="section-heading">Our Mission</h2>
                 <p>
                     The Penguin Company's mission is to raise awareness about penguin conservation and research while
                     giving everyday people a chance to interact with these amazing birds!
@@ -107,15 +99,11 @@
             
 
             <div class="main-series">
-                <h2 class="section-heading">Our history</h2>
+                <h2 class="section-heading">Our History</h2>
 
                 <div id="image-column">
-                    <div class="image">
-                        <img src="FILL ME" id="right-col-1" />
-                    </div>
-                    <div class="image">
-                        <img src="FILL ME" id="right-col-2" />
-                    </div>
+                        <img src="Images/About Us Page/Penguin Researchers 1 Small.jpg" id="right-col-1" />
+                        <img src="Images/About Us Page/Penguin Researchers 2 Small.jpg" id="right-col-2" />
                 </div>
 
 
@@ -127,9 +115,6 @@
                     threatening the colony's survival.
                 </p>
 
-                <br>
-                <br>
-
                 <p>
                     Partnering with local conservation organizations, we relocated the penguins to a specialized habitat
                     in a nearby wildlife sanctuary. Realizing the ongoing need to protect these penguins, we founded The
@@ -137,8 +122,6 @@
                     interaction.
                 </p>
 
-                <br>
-                <br>
                 
                 <p>
                     We began offering guided experiences where people could interact with the rescued penguins, all
@@ -146,18 +129,15 @@
                     ethical, controlled environments, the company aims to raise awareness about penguin conservation
                     while also funding research and habitat preservation.
                 </p>
+
+                <div id="image-column-mobile">
+                    <img src="Images/About Us Page/Penguin Researchers 1 Small.jpg" id="right-col-1" />
+                    <img src="Images/About Us Page/Penguin Researchers 2 Small.jpg" id="right-col-2" />
+                </div>
                 
                 
             </div>
 
-            <div id="image-column-mobile">
-                <div class="image">
-                    <img src="FILL ME" id="right-col-1" />
-                </div>
-                <div class="image">
-                    <img src="FILL ME" id="right-col-2" />
-                </div>
-            </div>
 
     
 
@@ -166,16 +146,11 @@
 
         <footer>
             <nav id="footer-nav">
-                <ul id="top-row">
-                    <a href="index.html"><li>Home</li></a>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                </ul>
-                <ul id="bottom-row">
-                    <a href="penguins.html"><li>About Penguins</li></a>
-                    <a href="safety.html"><li>Penguin Safety</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </footer>

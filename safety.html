@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
+
+        <style>
+
+            .main-series-two-column {
+                font-size: 22px;
+                line-height: 1.5;
+                display: flex;
+                margin: 20px 0px;
+            }
+
+            .main-series img {
+                float: right;
+                margin: 0px 50px;
+                width: 350px;
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 28px;
+            }
+
+            .column {
+                margin: 20px 20px 0px 20px;
+            }
+
+            @media (max-width:800px) {
+
+                .main-series-two-column {
+                    display: block;
+                }
+
+                .column {
+                    margin: 20px;
+                }
+
+                .main-series img {
+                    float: right;
+                    margin: 10px 50px;
+                    width: 30%;
+                }
+            }
+
+            @media (max-width:800px) {
+                h2 {
+                    text-align: center;
+                }
+
+                .main-series img {
+                    float: none;
+                    display: block;
+                    width: 30%;
+                    margin: auto;
+                }
+
+            }
+
+        
+
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
+            
+            <nav id="nav">
+                <ul>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>
+                Penguin Safety and Handling
+            </h1>
+
+            <div class="main-series">
+                <img src="Images/Penguin Safety/Penguin Handler Small.jpg"/>
+                <h2 class="section-heading">Introduction to penguin safety</h2>
+                <p>
+                    Penguins are fascinating and friendly animals, but it's important to approach them with care and
+                    respect. As part of The Penguin Company, our top priority is ensuring the well-being of our rescued
+                    penguins and providing a safe environment for guests. Penguins can be sensitive to human
+                    interaction, and their unique needs must be considered during every encounter. Following safety
+                    guidelines will ensure that both you and the penguins have a fun, stress-free experience.
+                </p>
+            </div>
+
+            <div class="main-series">
+                <h2 class="section-heading">Penguin handling dos and don'ts</h2>
+
+            <div class="main-series-two-column">
+            <div class="column">
+                <h3 class="section-subheading">Dos</h3>
+                <ul>
+                    <li>
+                        <strong>Follow the handler's instructions</strong> at all times to ensure the penguin's comfort
+                        and safety.
+                    </li>
+                    <li>
+                        <strong>Approach penguins slowly</strong> and calmly. Sudden movements may startle them.
+                    </li>
+                    <li>
+                        <strong>Maintain a respectful distance</strong> until the penguin approaches or until directed
+                        by a handler.
+                    </li>
+                    <li>
+                        <strong>Watch for signs of stress</strong>, such as rapid head movements or vocalizations.
+                        Inform your handler if you notice them. 
+                    </li>
+                    <li>
+                        <strong>Wash your hands</strong> before and after interacting with the penguins to avoid
+                        spreading germs.
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="column">
+                <h3 class="section-subheading">Don'ts</h3>
+                <ul>
+                    <li>
+                        <strong>Don't touch the penguin's back or face.</strong> They may feel threatened by this.
+                    </li>
+                    <li>
+                        <strong>Don't make loud noises or sudden actions</strong> that could scare the penguin.
+                    </li>
+                    <li>
+                        <strong>Don't chase or try to pick up a penguin</strong> without the handler's permission.
+                    </li>
+                    <li>
+                        <strong>Don't feed the penguins</strong> unless instructed to by the handler. They have specific
+                        diets and other foods may hurt them.
+                    </li>
+                    <li>
+                        <strong>Don't crowd the penguins.</strong> Give them space to move freely and retreat if they
+                        feel uncomfortable.
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        </main>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

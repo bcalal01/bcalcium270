@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>The Penguin Company</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="penguins, penguin, rental, services">
+        <meta name="description" content="Enjoy an unforgettable, up-close experience with penguins while supporting conservation efforts. Our penguin rentals bring you face-to-face with these charming, waddling friends! ">
         <link rel="stylesheet" href="styles.css" />
         <link rel="icon" href="favicon.png" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
 
         <style type ="text/css">
             .banner {
-                background-color: #ff0000;
-                height: 465px;
+                height: 305px;
                 background-position: center top;
                 padding-top: 10px;
-                margin-bottom: 50px;
+                margin-top: 100px;
+                background-image: url("Images/Home Page/Arctic_banner_penguin small.jpg");
+                background-repeat: no-repeat;
+                background-size: auto;
             }
 
             .banner #home-cta {
@@ -24,12 +31,13 @@
                 color: #D0894B;
                 background-color: #ffffff;
                 margin-left: 60px;
-                margin-top: 185px;
+                margin-top: 45px;
                 margin-bottom: 0px;
                 font-family: "Red Hat Display", sans-serif;
             }
 
             .banner #home-banner-btn {
+                display: inline-block;
                 background-color: #2B4753;
                 text-align: center;
                 width: 280px;
@@ -50,36 +58,39 @@
                 background-color: #253542;
             }
 
-
-            h2 {
-                font-size: 35px;
-                text-align: center;
-                margin-top: 30px;
+            h1#companyName {
+                margin-top: 5%;
             }
 
-            main .image {
-                margin: 0px 40px 10px 40px;
+            h2 {
+                font-size: 30px;
+                text-align: center;
+                margin: 40px 40px 20px 40px;
+            }
+
+            .main-series img {
+                margin-right: 50px;
                 float: left;
             }
 
-            main #content {
-                width: 60%;
-                display: inline-block;
-                margin: 20px 60px 0px 0px;
-                padding: 0px 30px;
-                font-size: 26px;
+            .main-series {
+                margin-bottom: 0px;
             }
 
-            .section-heading {
-                margin-left: 30px;
-                margin-right: 30px;
+            .main-series a {
+                color: #D0894B;
+                font-weight: bold;
+                text-decoration: none;
             }
 
-            p {
-                width: 90%;
-                font-size: 25px;
-                margin: auto;
-                margin-bottom: 30px;
+            .main-series a:hover {
+                color: #D9B45D;
+            }
+
+            @media (max-width:1100px) {
+                .main-series {
+                    margin-bottom: 0px;
+                }
             }
 
 
@@ -88,101 +99,234 @@
                     font-size: 50px;
                     width: fit-content;
                     margin: auto;
-                    margin-top: 185px;
+                    margin-top: 45px;
                 }
 
                 .banner #home-banner-btn {
-                    margin: auto;
+                    margin-left: 100px;
                     margin-top: 20px;
+                }
+
+                .section-heading {
+                    margin: 30px 30px 30px;
                 }
             }
 
-            @media (max-width:800px) {
-                main .image {
+            @media (max-width:820px) {
+                .main-series img {
                     float: none;
+                    display: block;
                     margin: auto;
+                    margin-top: 20px;
+                    width: 70%;
                 }
             }
 
             @media (max-width:550px) {
                 .banner #home-cta {
                     font-size: 40px;
+                    width: 300px;
+                }
+
+                .banner #home-banner-btn {
+                    margin-left: 50px;
                 }
             }
 
+            #testimonials {
+                display: flex;
+                width: 90%;
+                margin: auto;
+            }
+
+            #quote-left {
+                color: #D0894B;
+                font-size: 100px;
+                display: inline-block;
+                flex-basis: 0;
+                margin: 0;
+                padding-right: 20px;
+                align-self: start;
+            }
+
+            #quote-right {
+                color: #D0894B;
+                font-size: 100px;
+                display: inline-block;
+                flex-basis: 0;
+                margin: 0;
+                padding-left: 20px;
+                align-self: end;
+            }
+
+            .fading-out {
+                opacity: 0;
+                transition: opacity 1s linear;
+            }
+
+            .fading-in {
+                opacity: 1;
+                transition: opacity 1s linear;
+            }
         </style>
+
+        <script>
+
+            const testimonials = [
+                "The Penguin Playdate Package was pure joy! Having a penguin buddy for two hours was such a unique way"
+                + " to relax, and the personal handler made sure everything went smoothly. The penguin was so gentle"
+                + " and playful, and watching it waddle around with the toys was just adorable! A perfect escape from"
+                + " daily life—highly recommend! — Percy Guinsley",
+
+                "This was such an unexpectedly wonderful experience! The penguin was so sweet and curious, and the"
+                + " handler made us feel completely comfortable. The whole vibe was cozy and heartwarming. Having"
+                + " those little snacks and toys to play with the penguin made it even more fun. I can't wait to"
+                + " book another session! — Wendell Feathers",
+
+                "Best party ever, thanks to the penguins! Our guests were blown away by how interactive and"
+                + " entertaining the Party with Penguins package was. We loved getting to play games and take tons of"
+                + " pictures, and the penguin decorations were a hit. It's such a unique and memorable way to"
+                + " celebrate, and everyone's still talking about it! — Finn Tuxby",
+
+                "Having penguins at our anniversary party was a dream come true! The penguins were friendly, and the"
+                + " photo ops were incredible. All the penguin-themed decor added a whimsical touch, and the handlers"
+                + " ensured everyone had a safe, fantastic experience. This truly made our event unforgettable!"
+                + " — Poppy Flippers",
+
+                "I booked the Penguin Adventure Day as a surprise for my daughter's birthday, and it was absolutely"
+                + " magical. Spending the entire day with these adorable animals was something we'll never forget."
+                + " Learning about penguin care and feeding them made us feel like penguin experts! This package is"
+                + " worth every penny. — Penny Waddleton",
+
+                "Such a phenomenal experience! I organized this for my classroom, and the kids were enchanted. We"
+                + " learned so much about penguins, played with them, and even took home souvenirs. The handlers were"
+                + " knowledgeable and engaging, making it both fun and educational. Definitely the highlight of our"
+                + " school year! — Benny Pebblestone",
+
+                "Our team absolutely loved the Corporate Penguin Chill Package! Spending time with these adorable"
+                + " penguins was such a refreshing break from the daily grind. The activities were lighthearted but"
+                + " brought us all closer as a team, and everyone left with big smiles. It's perfect for a company"
+                + " retreat! — Tobias Winters",
+
+                "Penguins in the office? Yes, please! This package gave our whole team a lift, and everyone felt a lot"
+                + " more relaxed. The penguins were delightful, and the team-building activities created such a"
+                + " positive vibe. Highly recommend this for any team looking for a unique bonding experience!"
+                + " — Porter Flapton"
+            ]
+            // Index of testimony to show
+            let currentIndex = 0;
+
+            const fadeIn = () => {
+                testimony = document.getElementById("testimony");
+                testimony.classList.remove("fading-out");
+                testimony.classList.add("fading-in");
+
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                testimony.innerHTML = testimonials[currentIndex];
+
+                setTimeout(nextTestimony, 1000 * 10); // (1000 ms/s)(10 s)
+            }
+
+            const nextTestimony = () => {
+                testimony = document.getElementById("testimony");
+                testimony.classList.remove("fading-in");
+                testimony.classList.add("fading-out");
+
+                setTimeout(fadeIn, 1000 * 1); // (1000 ms/s)(1 s)
+            }
+
+            $(document).ready (function()
+            {   
+                $("#home-cta").hide();
+                $("#home-banner-btn").hide();
+                $("#home-cta").fadeIn(1000);
+                $("#home-banner-btn").fadeIn(1000);
+
+                nextTestimony();
+            })
+
+        </script>
+
     </head>
     
     <body>
         <header>
-            <a href="index.html"><img src="logo.png" id="nav-logo"/></a>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
             
             <nav id="nav">
                 <ul>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </header>
 
         <div class="banner" id="banner-home">
-            <h1 id="home-cta">Rent a penguin now!</h1>
+            <h2 id="home-cta">Hang out with a penguin</h2>
             <a href="ordering.html">
                 <div id="home-banner-btn">
-                    Ordering
+                    Order now
                 </div>
             </a>
         </div>
 
         <main>
+            <h1 id="companyName">The Penguin Company</h1>
             <div class="main-series">
-                <div class="image">
-                    <img src="FILL ME"/>
-                </div>
-                    <h2 class="section-heading">
-                        Your chill companions on demand
-                    </h2>
-                    <p>
-                        Ever dreamed of hanging out with a penguin? At The Penguin Company, we make that dream a
-                        reality! We provide a unique experience where you can rent adorable penguins for a fun-filled
-                        day. Whether you're hosting an event, planning a cozy hangout, or just want to enjoy some
-                        quality time with these charming birds, we've got you covered. Our penguins are friendly,
-                        playful, and always ready to bring a splash of joy into your life.
-                    </p>
-                    <p style="text-align: center;">
-                        Book a penguin (or penguins) today and get ready for a cool adventure like no other!
-                    </p>
+                <img src="Images/Home Page/Penguin Encounter 2 Small.jpg" alt="Family admiring penguins"
+                     style="margin-bottom: 0px;"/>
+                <h2 class="section-heading">
+                    Your chill companions on demand
+                </h2>
+                <p>
+                    Ever dreamed of hanging out with a penguin? At The Penguin Company, we make that dream a
+                    reality! We provide a unique experience where you can rent adorable penguins for a fun-filled
+                    day. Whether you're hosting an event, planning a cozy hangout, or just want to enjoy some
+                    quality time with these charming birds, we've got you covered. Our penguins are friendly,
+                    playful, and always ready to bring a splash of joy into your life.
+                </p>
             </div>
 
+            <br clear="all" />
+
             <div class="main-series">
-                <img src="FILL ME"/>
-                <div>
-                    <p class="section-heading">
-                        FILL ME
+                <img src="Images/Home Page/Penguin March Small.jpg" alt="Penguins in front of crowd"/>
+                <h2 class="section-heading">
+                    Book a penguin today for the coolest adventure!
+                </h2>
+                <p>
+                    The Penguin Company offers several different event packages tailored to your event's needs. Each package comes with
+                    interaction time with one to three penguins, assisted and supervised by our expert penguin handlers.
+                    Packages also come with penguin-themed activities for your event.
+                    View our different packages on our <a href = "services.html">Services</a> page!
+                </p>
+            </div>
+
+            <br clear="all" />
+
+            <div class="main-series">
+                <h2 class="section-heading" style="margin-bottom: 5px; margin-top: 0px;">
+                    Testimonials
+                </h2>
+                <div id="testimonials">
+                    <p id="quote-left">“</p>
+                    <p id="testimony">
+                        The Penguin Playdate Package was pure joy! Having a penguin buddy for two hours was such a unique way to relax, and the personal handler made sure everything went smoothly. The penguin was so gentle and playful, and watching it waddle around with the toys was just adorable! A perfect escape from daily life—highly recommend!
                     </p>
-                    <p>
-                        FILL ME
-                    </p>
+                    <p id="quote-right">”</p>
                 </div>
             </div>
         </main>
 
-        <div style="width: 100%; height: 5px"></div>
-
         <footer>
             <nav id="footer-nav">
-                <ul id="top-row">
-                    <a href="index.html"><li>Home</li></a>
-                    <a href="about.html"><li>About Us</li></a>
-                    <a href="services.html"><li>Services</li></a>
-                    <a href="ordering.html"><li>Ordering</li></a>
-                </ul>
-                <ul id="bottom-row">
-                    <a href="penguins.html"><li>About Penguins</li></a>
-                    <a href="safety.html"><li>Penguin Safety Instructions</li></a>
-                    <a href="contact.html"><li>Contact Us</li></a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </footer>

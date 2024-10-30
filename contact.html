@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
+
+        <style>
+            h1{
+                text-align: center;
+            }
+
+            p {
+                width: 90%;
+                font-size: 25px;
+                margin: auto;
+                line-height: 1.5;
+            }
+
+            h2 {
+                font-size: 40px;
+                margin: 40px 40px 20px 40px;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: bold;
+            }
+
+            .contact-info a{
+                text-decoration: none;
+                color: #2B4753;
+            }
+
+            .contact-info a:hover{
+                color: #D9B45D;
+            }
+
+            form{
+                display: block;
+                text-align: center;
+                margin-left: 10%;
+                width: 80%;
+            }
+
+            form label{
+                width: 90%;
+                font-size: 25px;
+                margin-bottom: 20px;
+                width: 100%;
+                font-weight: bold;
+                display: block;
+            }
+
+            form label input{
+                display: block;
+                margin: 0 auto 0 auto;
+                margin-top: 20px;
+                width: 40%;
+                height: 40px;
+                padding: 5px;
+                font-size: 20px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            form label textarea{
+                display: block;
+                margin: 0 auto 0 auto;
+                margin-top: 20px;
+                width: 60%;
+                height: 400px;
+                padding: 5px;
+                font-size: 15px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            input[type=submit] {
+                display: inline-block;
+                background-color: #2B4753;
+                text-align: center;
+                width: 280px;
+                font-size: 30px;
+                color: #ffffff;
+                border-radius: 30px;
+                padding: 12px 0px;
+                margin: 0 auto 0 auto;
+                margin-bottom: 20px;
+                font-family: "Ubuntu", sans-serif;
+                border: 0;
+            }
+            
+            input[type=submit]:hover {
+                color: #D9B45D;
+                background-color: #253542;
+                cursor: pointer;
+            }
+
+            .accent-text {
+                color: #ff0000;
+            }
+
+        </style>
+
+        <script>
+            function submissionAlert()
+            {
+                alert("Your message has been submitted! You should receive a response within 3 - 5 business days");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html"><img src="logo.png" id="nav-logo" alt="The Penguin Company logo"/></a>
+            
+            <nav id="nav">
+                <ul>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <h1>Contact Us</h1>
+            <p class="contact-info">Email: <a href="mailto:contact@thepenguin.co">contact@thepenguin.co</a></p>
+            <p class="contact-info">Phone: <a href="tel:555-PENGUIN">555-PENGUIN</a></p>
+            <p class="contact-info">Send us a message!</p>
+            <form id = "contactMessage" onsubmit = "submissionAlert()">
+                <label>
+                    Your email address<span class="accent-text">*</span><br />
+                    <input type="email" name="email" id="email-input" required/>
+                </label>
+                <label>
+                    Your message to us<span class="accent-text">*</span>
+                    <textarea name="msg" id="msg-area" rows="4" cols="30" required></textarea>
+                </label>
+                <input type="submit" id="order-submit" value="Submit Message"/>
+            </form>
+        </main>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>
