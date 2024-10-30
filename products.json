@@ -1,0 +1,52 @@
+{ "products" : [
+            {
+                "name" : "Summer V-Neck Maxi Dress",
+                "description" : "free, flowy, and effortless dress with flutter sleeves",
+                "price" : "$23.99",
+                "categories" : ["Dress", "Casual", "Brown"]
+            },
+            {
+                "name" : "Floral A-Line Dress",
+                "description" : "elegant tiered maxi dress with a graceful ruffle",
+                "price" : "$47.99",
+                "categories" : ["Dress", "Casual", "White"]
+            },
+            {
+                "name" : "Crew Neck Peplum Dress",
+                "description" : "slim fitting sheath silhouette with tasteful pleating",
+                "price" : "$38.99",
+                "categories" : ["Dress", "Office", "White"]
+            },
+            {
+                "name" : "Boho Maxi Beach Skirt",
+                "description" : "high-wasted maxi skirt with elastic drawstring",
+                "price" : "$32.98",
+                "categories" : ["Skirt", "Casual", "Pink"]
+            },
+            {
+                "name" : "Silk Button Down Blouse",
+                "description" : "soft, fitted, wrinkle-free and professional top",
+                "price" : "$49.99",
+                "categories" : ["Shirt", "Office", "Purple"]
+            },
+            {
+                "name" : "Fall Long Sleeve Crop Top",
+                "description" : "off the shoulder elegantly minimalist and trendy top",
+                "price" : "$28.99",
+                "categories" : ["Shirt", "Casual", "Orange"]
+            },
+            {
+                "name" : "Faux Leather Mini Skirt",
+                "description" : "lightweight faux leather skirt with a demure side split",
+                "price" : "$30.99",
+                "categories" : ["Skirt", "Casual", "Brown"]
+            },
+            {
+                "name" : "Short Sleeve Chiffon Blouse",
+                "description" : "breathable top with a slimming lapel v-neck",
+                "price" : "$29.99",
+                "categories" : ["Shirt", "Office", "White"]
+            }
+
+        ]
+}
