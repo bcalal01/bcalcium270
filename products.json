@@ -1,4 +1,4 @@
-{ "products" : [
+[
             {
                 "name" : "Summer V-Neck Maxi Dress",
                 "description" : "free, flowy, and effortless dress with flutter sleeves",
@@ -49,4 +49,3 @@
             }
 
         ]
-}
