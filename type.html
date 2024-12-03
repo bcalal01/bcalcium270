@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Typing Tunes</title>
+</head>
+<body>
+    <header>
+        <div class="history">
+          <a href="#">History</a>
+        </div>
+        <h1>Typing Tunes</h1>
+        <div class="rankings">
+          <a href="#">Rankings</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="song-list">
+          <div class="song-header">
+            <form action="#" id="search">
+              <div style="display: flex; gap: 10px;">
+                <label>
+                  Song title<br />
+                  <input type="text" 
+                         id="title-input"
+                         name="title"
+                         maxlength="40"
+                         required />
+                </label>
+                <label>
+                  Artist name<br />
+                  <input type="text"
+                         id="artist-input"
+                         name="artist"
+                         maxlength="40"
+                         required />
+                </label>
+                <button type="submit">Search</button>
+              </div>
+            </form>
+
+            <span id="song-display">Song will be displayed here.</span>
+            <span>WPM</span>
+            <span>Accuracy</span>
+            <span id="username-display">Username</span>
+          </div>
+
+          <div id="current-line">
+            Song lyrics will show up here.
+          </div>
+          <!-- TODO: put in stylesheet pls and thx -->
+          <div id="next-line" style="color: #808080;">
+          </div>
+        </section>
+    </main>
+
+    <footer>
+      <div class="history">
+        <a href="#">History</a>
+      </div>
+      <div>Typing Tunes</div>
+      <div class="rankings">
+        <a href="#">Rankings</a>
+      </div>
+    </footer>
+
+  <script>
+    // Anything within brackets (lazy), plus the newline after
+    const ANNOTATION_REGEX = /\[.*?\]\n?/g;
+
+    // Stores the lyrics array (a string for each line)
+    let lyrics = [];
+
+    // Current line number
+    let lineNumber = 0;
+
+    /**
+     * Removes the song structure annotations ("[Pre-chorus]" and the like).
+     * Returns an array of strings.
+     */
+    const cleanLyrics = (lyrics) => {
+      return lyrics.replaceAll(ANNOTATION_REGEX, "")
+                   .replaceAll(/\n+/g, "\n")
+                   .split("\n");
+    }
+
+    /**
+     * Handles the fetch'd data from the lyrics API.
+     * Populates the display with song info.
+     */
+    const handleData = (json) => {
+      if(!json["lyrics"]) {
+        document.getElementById("current-line").innerHTML = "Song could not be found!";
+        document.getElementById("song-display").innerHTML = "Song will be displayed here.";
+        return;
+      }
+
+      lyrics = cleanLyrics(json["lyrics"]);
+      const title = json["title"];
+      const artist = json["artist"];
+
+      document.getElementById("current-line").innerHTML = lyrics[0];
+      document.getElementById("next-line").innerHTML = lyrics[1];
+      document.getElementById("song-display").innerHTML = artist + " - " + title;
+    }
+
+    /**
+     * Callback function for when a user searches for a song.
+     * Populates the display with song info.
+     */
+    const handleSubmit = (event) => {
+      event.preventDefault();
+
+      const input = new FormData(document.forms[0]);
+      const title = input.get("title");
+      const artist = input.get("artist");
+      const url = `https://lyrist.vercel.app/api/${title}/${artist}`;
+
+      fetch(url)
+        .then(res => res.text())
+        .then(text => handleData(JSON.parse(text)));
+    }
+
+    const form = document.getElementById("search");
+    form.addEventListener("submit", handleSubmit);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get("username");
+    document.getElementById("username-display").innerHTML = username;
+  </script>
+</body>
+</html>
