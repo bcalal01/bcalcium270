@@ -54,6 +54,7 @@ http.createServer(function (req, res) {
 
             if (result.length == 0) {
                 console.log("No companies found matching this identifier");
+                res.write("No companies found matching this identifier");
             } else {
                 for (i = 0; i < result.length; i++) {
                     console.log("Company: " + result[i].company + " Ticker: " + result[i].ticker + " Price: " + result[i].price);
