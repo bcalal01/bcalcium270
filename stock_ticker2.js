@@ -57,11 +57,14 @@ http.createServer(function (req, res) {
             } else {
                 for (i = 0; i < result.length; i++) {
                     console.log("Company: " + result[i].company + " Ticker: " + result[i].ticker + " Price: " + result[i].price);
+                    res.write("Company: " + result[i].company + " Ticker: " + result[i].ticker + " Price: " + result[i].price + "<br>");
                 }
             }
+
+            res.end();
             
         });
-        res.end();
+
       }
 
 }).listen(port);
