@@ -49,6 +49,8 @@ http.createServer(function (req, res) {
                 searchQuery = {ticker:compQuery};
             }
 
+            console.log(searchQuery);
+
             // searches the database
             result = await collection.find(searchQuery).toArray();
 
