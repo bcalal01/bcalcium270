@@ -12,11 +12,11 @@
 },
   "author": "",
   "license": "ISC",
-  "bugs": {
-  "url": ""
   "dependencies": {
     "mongodb": "^6.11.0"
-  }
+},
+  "bugs": {
+  "url": ""
 },
   "homepage": ""
 }
