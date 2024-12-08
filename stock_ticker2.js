@@ -1,8 +1,8 @@
 var http = require('http');
 var urlObj = require('url');
+var mongo = require('mongodb');
 var port = process.env.PORT || 3000;
 //var port = 8080;   //uncomment to run local
-var mongo = require('mongodb');
 
 var MongoClient = mongo.MongoClient;
 
