@@ -57,10 +57,11 @@
         #nicole {
             position: absolute;
             top: 680px;
-            width: 500px;
+            left: 150px;
+            width: 200px;
         }
 
-        .nicole_text {
+        #nicole_text {
             position: absolute;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             background-color: #ffebcd;
@@ -69,17 +70,30 @@
             top: 640px;
             left: 300px;
             font-size: 30px;
-        }
-
-        #nicole_text1 {
             visibility: hidden;
+            max-width: 1050px;
         }
 
         #nicole_choice {
             position: absolute;            
             visibility: hidden;
             top: 950px;
-            left: 25%
+            left: 25%;
+            z-index: 20;
+        }
+
+        #oscar {
+            position: absolute;
+            width: 50px;
+            top: 2400px;
+        }
+
+        #tomato {
+            position: absolute;
+            visibility: hidden;
+            top: 720px;
+            left: 350px;
+            width: 75px;
         }
 
     </style>
@@ -96,13 +110,15 @@
     </div>
 
     <div id="scene2" class="scene">
-        <img id="nicole" src="images/nicole.png"/>
-        <div id="nicole_text1" class="nicole_text">
+        <img id="nicole" src="images/nicolenormal.png"/>
+        <div id="nicole_text">
             Oh naur!
         </div>
+        <img id="tomato" src="images/tomato.png"/>
+        <img id="oscar" src="images/oscar.png"/>
         <div id="nicole_choice">
             <button id="help">Help Nicole Kidman</button>
-            <button id="smite">Smite Nicole Kidman</button>
+            <button id="smite">Rebuke Nicole Kidman</button>
         </div>
     </div>
 
@@ -116,14 +132,36 @@
 
     <script>
         let nicole = document.getElementById('nicole');
+        let oscar = document.getElementById('oscar');
+        let tomato = document.getElementById('tomato');
         let nicole_choice = document.getElementById('nicole_choice');
         let help = document.getElementById('help');
-        let smite = document.getElementById('smite');
+        let rebuke = document.getElementById('smite');
+        let nicole_text = document.getElementById('nicole_text');
+        let first_contact = true;
+        let has_oscar = false;
+        let has_tomato = false;
 
         nicole.onclick = function () {
-            document.getElementById('nicole_text1').style.visibility = "visible";
-            nicole_choice.style.visibility = "visible";
+            if (first_contact) {
+                nicole_text.style.visibility = "visible";
+                nicole_choice.style.visibility = "visible";
+                first_contact = false;
+            } else if (has_oscar) {
+                nicole.src = "images/nicolehappy.png";
+                nicole_text.innerHTML = "Omg thank u so much! Here's a tomato--it's how we say thank you in Australia."
+                tomato.style.visibility = "visible";
+            }
+        }
 
+        oscar.onclick = function () {
+            oscar.style.visibility = "hidden";
+            has_oscar = true;
+        }
+
+        tomato.onclick = function () {
+            tomato.style.visibility = "hidden";
+            has_tomato = true;
         }
 
 
@@ -134,7 +172,21 @@
 
         help.onclick = function () {
             console.log("help");
-            nicole.src = "images/nicolethanks.png"
+            nicole_text.innerHTML = "I seem to have misplaced my Oscar, which I won for my complex and layered performance as Virginia Woolf in the 2002 film <em>The Hours.</em> Can you help me find it?";
+            reset_nicole();
+        }
+
+        rebuke.onclick = function () {
+            console.log("rebuke");
+            nicole.src = "images/nicoleangry.png";
+            nicole_text.innerHTML = "How dare you?";
+            reset_nicole();
+            setTimeout(function() {window.location.replace("smited.html")}, 1500);
+        }
+
+        function reset_nicole () {
+            console.log("here");
+            nicole_choice.style.visibility = "hidden";
         }
 
 
