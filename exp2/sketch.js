@@ -30,7 +30,7 @@ function draw() {
         //ellipse(xvalue, yvalue, 3, 3);
         newdirt = new Dirt();
         dust_list.push(newdirt);
-        interval = random(10, 20);
+        interval = random(1, 2);
         console.log(interval);
         timer = 0;
     }
