@@ -48,7 +48,7 @@ class Dirt {
 
     render() {
         if (this.generate) {
-            ellipse(this.position.x, this.position.y, 101, 101);
+            ellipse(this.position.x, this.position.y, 100, 100);
             //text(cleaned, this.position.x, this.position.y);
         }
     }
