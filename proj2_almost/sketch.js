@@ -96,7 +96,6 @@ function setup () {
     let canvas = createCanvas(winWidth, winHeight);
     stroke(0);
     makeJCC();
-    addDay()
 }
 
 function draw () {
