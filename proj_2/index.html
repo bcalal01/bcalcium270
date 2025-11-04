@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js"></script>
+    <meta charset="utf-8" />
+    <style>
+        canvas {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+            border: solid black;
+        }
+
+        #textbox {
+            position: absolute;
+            font-size: 1em;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            top: 18%;
+            visibility: hidden;
+        }
+
+        #startButton {
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            transform: translate( -50%, -50% );
+        }
+
+        #vacationButton {
+            position: absolute;
+            left: 50%;
+            top: 13%;
+            transform: translate( -50%, -50% );
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+        <button id="startButton">Go to work</button>
+        <button id="vacationButton">Summer break</button>
+        <div id="textbox"></div>
+    </main>
+    <script src="sketch.js"></script>
+  </body>
+</html>
