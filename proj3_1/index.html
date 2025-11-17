@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <style>
+        #container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0;
+        }
+
+        #me {
+            bottom: 0;
+            right: 0;
+        }
+
+        #hi {
+            position: absolute;
+            left: 50%;
+        }
+
+        #textbox {
+            width: 70%;
+        }
+
+        body {
+            font-size: 2em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .choice {
+            display: none;
+            border: solid;
+            text-align: center;
+        }
+
+        .choice:hover {
+            color: white;
+            background-color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+        <div id="container">
+            <div id="textbox"></div>
+            <button id="hi">Hi</button>
+            <div class="choice" id="choice1"></div>
+            <div class="choice" id="choice2"></div>
+            <br>
+            <img id="me" src="richard4.png"/>
+        </div>
+    </main>
+
+        <script>
+            const hi = document.getElementById('hi')
+            const me = document.getElementById('me')
+            const textbox = document.getElementById('textbox')
+            const choice1 = document.getElementById('choice1')
+            const choice2 = document.getElementById('choice2')
+
+            let speaking = false;
+
+            hi.onclick = function () {
+                if (!speaking) {
+                    talk("Hi. The weather's pretty nice today.")
+                }
+            }
+
+            function talk (dialogue) {
+                let sentence = "";
+                speaking = true;
+                setTimeout(() => {
+                    speaking = false;
+                    choice1.style.display = "block";
+                    choice1.innerHTML = "yeah."
+                    choice2.style.display = "block";
+                    choice2.innerHTML = "the volcano erupted."
+                    me.src = "richard4.png"
+                }, 100 * (dialogue.length + 1));
+                for (let i = 0; i < dialogue.length; i++) {
+                    setTimeout(() => {
+                        sentence += dialogue[i];
+                        textbox.innerHTML = sentence;
+                        if (i % 3 === 0) {
+                            me.src = "richard4.png"
+                        } else {
+                            me.src = "richard3.png"
+                        }
+                    }, 100 * i);
+                
+                }
+            }
+
+        </script>
+  </body>
+</html>
