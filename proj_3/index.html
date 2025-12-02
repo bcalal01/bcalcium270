@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <style>
+        #container {
+            display: none;
+            flex-direction: column;
+            margin: 20px 0px;
+        }
+
+        .gridrow {
+            display: flex;
+            justify-content: center; 
+            align-items: flex-start;
+            height: fit-content;
+        }
+
+        body {
+            font-size: 2em;
+            font-family: monospace;
+        }
+
+        .choice {
+            width: 300px;
+            height: 300px;
+            margin: 5px 20px;
+            text-align: center;
+            display: inline-block;
+            border: solid;
+            background-size: cover;
+        }
+
+        .text {
+            width: 300px;
+            margin: 0px 20px;
+            text-align: center;
+            border: solid white;
+        }
+
+        #textbox {
+            width: 1000px;
+            margin: 40px auto;
+            margin-top: 20px;
+        }
+
+        #nextbutton {
+            display: none;
+            width: fit-content;
+            padding: 10px;
+            color: #000000;
+            background-color: #ffffff;
+            border: solid;
+            text-align: center;
+            float: right;
+            margin-right: 30%;
+        }
+
+        #nextbutton:hover {
+            color: #ffffff;
+            background-color: #000000;
+        }
+
+        .binarybutton {
+            width: fit-content;
+            padding: 10px;
+            text-align: center;
+            color: #000000;
+            background-color: #ffffff;
+            border: solid;
+            display: inline-block;
+        }
+
+        .binarybutton:hover {
+            color: #ffffff;
+            background-color: #000000;
+        }
+
+        #binarychoices {
+            display: none;
+            float: right;
+            margin-right: 30%;
+        }
+
+        #choicetext {
+            width: 1000px;
+            margin: 30px auto;
+        }
+
+        #porthole {
+            height: 500px;
+            width: 500px;
+            border: solid;
+            margin: auto;
+            margin-bottom: 40px;
+            display: none;
+            background-size: cover;
+            background-image: url(images/outside.png);
+        }
+
+        #whitescreen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background-color: #ffffff;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 5s;
+        }
+
+    </style>
+  </head>
+  <body>
+    <main>
+        <div id="whitescreen"></div>
+        <div id="textbox"></div>
+        <div id="container">
+          <div class="gridrow">
+            <div class="choice" id="choice1"></div>
+            <div class="choice" id="choice2"></div>
+            <div class="choice" id="choice3"></div>
+          </div>
+          <div class="gridrow">
+            <div class="text" id="text1"></div>
+            <div class="text" id="text2"></div>
+            <div class="text" id="text3"></div>
+          </div>
+        </div>
+        <div id="choicetext"></div>
+        <div id="porthole"></div> 
+        <div id="nextbutton">Next</div>
+        <div id="binarychoices">
+            <div id="yes" class="binarybutton">Yes</div>
+            <div id="no" class="binarybutton">No</div>
+        </div>
+    </main>
+
+        <script>
+            const interstitials = ["This is a very standard exam, which, following recent events, |has now become necessary. ||Answer truthfully. ||God lives in a screen.",
+                                    "We're about one third of the way through the assessment. ||Based on a preliminary analysis of your answers thus far, |you are a(n): ",
+                                    "Per the Humane Interrogation Act, ratified by popular vote in |December 2026, you are now permitted to look out the window for up to  one minute.",
+                                    "We will now return to the exam.",
+                                    "The exam is now two-thirds complete. ||Again, you may look out the window for up to one minute. ||But first, your answers up to this point indicate you are a(n):",
+                                    "We will now complete the final section of the exam.",
+                                    "The exam is now over. You are a(n): "]
+            const texts = ["Height: Some things are taller than others. Identify the tallest thing from the following choices. Please.",
+                            "Trust: Two of these objects will betray you. Which one can you trust?",
+                            "Supercognition: Which square is blue?",
+                            "Caution: Omens are superstition, largely discarded in post-civil |society. Nevertheless, which portent shall you heed?",
+                            "Humanity: Strength lies in discernment, and our world is rife with unreal copies of real things. Which eye is not human?",
+                            "Worth: Which tenet is most necessary for the maintenance of society?",
+                            "Recognition: Which square is blue?",
+                            "Disrepair: The paint is peeling off the walls in this room. Does this |elicit distress?",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "Mythos: The worship of image and symbol, facsimiles of people, loved |and exalted. To whom will you subscribe?",
+                            "Precognition: Which square will you choose 3 questions from now?",
+                            "Action: Discord lies at your door and in your hand. What can you do?",
+                            "Reality: The veil separating the physical and virtual realms has never |been thinner. Which of the following objects is real?",
+                            "Texture: The cost of post-civil convenience is multitudinous. Your feet don't touch the earth so that your hands may touch the sky. |Which texture do you feel in your heart?",
+                            "Intuition: ",
+                            "Complexity: Information flows like the rivers that used to line the |landscapes of the earth. How is information spread?",
+                            "Spectacle: The affordance of frivolity is exponential. What nature of | content occupies the mind?",
+                            "",
+                            "", 
+                            "",
+                            "Brilliance: Light is a symbol of wisdom and guidance. Whose rays will you |allow into the shell of your being?", 
+                            "Deceit: Tell a lie.",
+                            "Ornament: The acquisition of ornaments begets the possession of |ornaments. Which ornament will you acquire?",
+                            "Cognition: Which square is not blue?",
+                            "Inhumanity: Which eye did you previously assess as being inhuman?",
+                            "Rebirth: The permanence of death has been superseded by the |metamorphosis of eternal digital longevity. Are you resistant |to subsumption by the mass?",
+                            "Nature: Do you miss it all?",
+                            "Eternity: This is the final and most essential question. Are you ready |for forever?"] 
+            const choiceArray = [["Chair", "Shoe", "Dice"],
+                                 ["Umbrella", "Dairy product", "Fire hydrant"],
+                                 ["", "", ""],
+                                 ["Dead fly", "Stop sign", "Hawk eating a squirrel"],
+                                 ["", "", ""],
+                                 ["Elimination", "Growth", "Resolve"],
+                                 ["", "", ""],
+                                 ["Order is all we have.", "Surface is immaterial to the whole.", "It is natural to resist intervention."],
+                                 [],
+                                 [],
+                                 [],
+                                 [],
+                                 ["Acis", "Poseidon", "Galatea"],
+                                 ["", "", ""],
+                                 ["Distance", "Ignorance", "Distraction"],
+                                 ["Stack of newspapers", "Empty gift bag", "3d puzzle cube"],
+                                 ["Nascency", "Detail", "Annihilation"],
+                                 ["", "", ""],
+                                 ["Projection", "Absorption", "Synthesis "],
+                                 ["Theater", "Grandeur", "Pleasure"],
+                                 [],
+                                 [],
+                                 [],
+                                 ["Artifice", "Nature", "Concurrence"],
+                                 ["The bottle is full.", "The door is open.", "The banana is real."],
+                                 ["Plastic", "Paper", "Metal"],
+                                 ["", "", ""],
+                                 ["", "", ""],
+                                 ["Images live forever.", "Death is immutable and important.", "Life and death are irrelevant."],
+                                 ["", "", ""],
+                                 ["", "", ""]
+                                 ]
+            const answerArray = [["Correct. This chair is 3 feet tall.", 
+                                    "Incorrect. The shoe, measuring 6 inches tall, is not as tall as the chair.", 
+                                    "Incorrect. The dice, even when stacked on top of each other, |are not as tall as the chair."],
+                                 ["You have faith in the present, that which is immediately |apparent.", 
+                                    "You have faith in others and the promises they make.", 
+                                    "You have faith in the institution and the contract of |government."],
+                                 ["Incorrect. The right square is always blue.", 
+                                    "Incorrect. The right square is always blue.", 
+                                    "Correct. The right square is always blue."],
+                                 ["You fear temporalism. The worst danger is on a slow, steady |march.", 
+                                    "You fear literalism. The worst danger is honest and artless.", 
+                                    "You fear primitivism. The worst danger is within you already. |Will you be the hawk or the squirrel?"],
+                                 ["Are you confident in your assessment?", 
+                                    "Are you confident in your assessment?", 
+                                    "Are you confident in your assessment?"],
+                                 ["You value that which is hard but important.", 
+                                    "You value that which is good and productive.", 
+                                    "You value that which is powerful yet unflinching."],
+                                 ["Incorrect. That square is orange. You are reminded that the |right square is always blue.", 
+                                    "Incorrect. That square is black. You are reminded that the |right square is always blue.", 
+                                    "Correct."],
+                                 ["Well said.", 
+                                    "Well said.", 
+                                    "Well said."],
+                                 [],
+                                 [],
+                                 [],
+                                 [],
+                                 ["You feel connected to those who seem like you.",
+                                    "You are easily influenced by the hand of power. ", 
+                                    "You are swayed by the beautiful and intoxicating."],
+                                 ["Noted.",
+                                    "Noted.",
+                                    "Noted."],
+                                 ["Tragedy and prosperity look the same from 10000 feet away.",
+                                    "That which can't be seen is of  concern to no one but the |sighted.",
+                                    "The music of fancy stifles the screams of suffering."],
+                                 ["A manifestation in the form of tangible hologram.", 
+                                    "A node in the digital-corporeal crystalline web.", 
+                                    "An amalgamation of deconstructed real things."],
+                                 ["Can you ever return to this?", 
+                                    "You appreciate the mindless bloodshed and tireless labor that |precede you.", 
+                                    "You are eager to inherit the cold world of the future."],
+                                 ["Good choice.",
+                                    "Good choice.",
+                                    "Good choice."],
+                                 ["There exists one point of truth from which all knowledge stems.", 
+                                    "Knowledge is rooted in empiricism. From experience comes the |truth.",
+                                    "Knowledge is the combination of equally alternative truths."],
+                                 ["Interpersonal relationships as entertainment.",
+                                    "Violent extravagance as entertainment. ",
+                                    "Base debauchery as entertainment."],
+                                 [],
+                                 [],
+                                 [],
+                                 ["Can you feel the immanence of manmade radiance clinging to your skull?",
+                                    "Can you feel the ephemeral rays dissolving the gravity of |material existence?",
+                                    "Can you feel the weightlessness of being assimilated into a |truly undying light?"],
+                                 ["Complicity becomes inevitable.",
+                                    "Complicity becomes inevitable.",
+                                    "Complicity becomes inevitable."],
+                                 ["Treasure is molded to perfection. Happiness is the newest |thing.",
+                                    "Treasure is flat to the touch. Happiness is flowering |abundance.",
+                                    "Treasure is shiny and hard. Happiness is a reflective material."],
+                                 ["Incorrect. That square is blue.",
+                                    "Correct. That square is orange.",
+                                    "Incorrect. That square is blue."],
+                                 ["Interesting choice.",
+                                    "Interesting choice.",
+                                    "Interesting choice."],
+                                ["Understood.",
+                                    "Understood.",
+                                    "Understood."],
+                                 ["Find solace in the fact it lives forever in your hand.",
+                                    "Find solace in the fact it lives forever in your hand.",
+                                    "Find solace in the fact it lives forever in your hand."],
+                                 [".",
+                                    ".",
+                                    ". "]] 
+            const pictureArray = [["chair.png", "shoe.png", "dice.png"],
+                                  ["umbrella.png", "milk.png", "hydrant.png"],
+                                  ["white.png", "white.png", "white.png"],
+                                  ["fly.png", "stop.png", "hawk.png"],
+                                  ["eye1.png", "eye2.png", "eye3.png"], 
+                                  ["trash.png", "flower.png ", "brick.png "], 
+                                  ["blue.png", "white.png", "white.png"],
+                                  ["paint1.png", "paint2.png", "paint3.png"],
+                                  [],
+                                  [],
+                                  [],
+                                  [],
+                                  ["acis.png", "poseidon.png", "galatea.png"],
+                                  ["white.png", "white.png", "white.png"],
+                                  ["distance.png", "ignorance.png", "distraction.png "],
+                                  ["news.png", "bag.png", "puzzle.png"],
+                                  ["birth.png", "detail.png", "annihilation.png"], 
+                                  ["white.png", "white.png", "white.png"],
+                                  ["absorption.png", "projection.png", "synthesis.png"],
+                                  ["theater.png", "grandeur.png", "pleasure.png"],
+                                  [],
+                                  [],
+                                  [],
+                                  ["artifice.png", "concurrence.png", "nature.png "], 
+                                  ["emptywine.png", "door.png", "banana.png"],
+                                  ["plastic.png", "paper.png", "metal.png"],
+                                  ["orange.png", "blue.png", "white.png"],
+                                  ["eye2.png", "eye3.png", "eye1.png"], 
+                                  ["dead1.png", "dead2.png", "dead3.png"],
+                                  ["nature1.png", "nature2.png", "nature3.png"],
+                                  ["black.png", "black.png", "black.png"]]
+            const textbox = document.getElementById('textbox')
+            const choices = document.getElementById('container')
+            const choice1 = document.getElementById('choice1')
+            const choice2 = document.getElementById('choice2')
+            const choice3 = document.getElementById('choice3')
+            const text1 = document.getElementById('text1')
+            const text2 = document.getElementById('text2')
+            const text3 = document.getElementById('text3')
+            const choiceText = document.getElementById('choicetext')
+            const binaryChoices = document.getElementById('binarychoices')
+            const yes = document.getElementById('yes')
+            const no = document.getElementById('no')
+            const nextButton = document.getElementById('nextbutton')
+            const porthole = document.getElementById('porthole')
+            const whiteScreen = document.getElementById('whitescreen')
+
+            let textDelay = 50;
+            let currChoices = -1;  
+            let currInterstitial = -1;
+            let answered = false;
+            let recentChoice = "";
+            let ant = 0;
+            let sun = 0;
+            let virus = 0;
+            let wire = 0;
+            let wave = 0;
+            let precog = 0;
+            let eye = 0;
+
+            yes.onclick = function () {
+                recentChoice = "";
+                switch (currChoices) {
+                    case 3:
+                        writeToTextbox(choiceText, "You think of yourself as the predator.", () => {nextButton.style.display = "block";});
+                        virus += 2;
+                        break;
+                    case 4:
+                        writeToTextbox(choiceText, "Noted.", () => {nextButton.style.display = "block";});
+                        sun += 2;
+                        break;
+                    case 16:
+                        writeToTextbox(choiceText, "You imbibe the liquor of optimism.", () => {nextButton.style.display = "block";});
+                        ant += 2;
+                        break;
+                    case 23:
+                        writeToTextbox(choiceText, "The light smiles back at you.", () => {nextButton.style.display = "block";});
+                        wave += 2;
+                        break;
+                }
+                binaryChoices.style.display = "none";
+                yes.innerHTML = "Yes";
+                no.innerHTML = "No ";
+            }
+
+            no.onclick = function () {
+                recentChoice = "";
+                switch (currChoices) {
+                    case 3:
+                        writeToTextbox(choiceText, "You think of yourself as the prey.", () => {nextButton.style.display = "block";});
+                        wire += 2;
+                        break;
+                    case 4:
+                        writeToTextbox(choiceText, "Understood.", () => {nextButton.style.display = "block";});
+                        ant += 1;
+                        break;
+                    case 16: 
+                        writeToTextbox(choiceText, "You wield the knife of realism.", () => {nextButton.style.display = "block";});
+                        wave += 2;
+                        break;
+                    case 23:
+                        writeToTextbox(choiceText, "You resist what is irresistible.", () => {nextButton.style.display = "block";});
+                        wire += 2;
+                        break;
+                }
+                binaryChoices.style.display = "none";
+                yes.innerHTML = "Yes";
+                no.innerHTML = "No";
+            }
+
+            document.addEventListener("keydown", function(event) {
+                if (event.key == ' ' || event.code == 'Space') {
+                    textDelay = 1; 
+                }
+            })
+
+            document.addEventListener("keyup", function(event) {
+                if (event.key == ' ' || event.code == 'Space') {
+                    textDelay = 50;
+                }
+            })
+
+            function displayChoices () {
+                choices.style.display = "flex";
+                changePictures();
+            }
+
+            function displayNextButton() {
+                    switch (currChoices) {
+                        case 4:
+                            binaryChoices.style.display = "block";
+                            break;
+                        case 3: 
+                            if (recentChoice == "Hawk eating a squirrel") {
+                                binaryChoices.style.display = "block";
+                                yes.innerHTML = "Hawk";
+                                no.innerHTML = "Squirrel";
+                            } else {
+                                nextButton.style.display = "block";
+                            }
+                            break;
+                        case 16:
+                            if (recentChoice == "Nascency") {
+                                binaryChoices.style.display = "block";
+                            } else {
+                                nextButton.style.display = "block";
+                            }
+                            break;
+                        case 23:
+                            binaryChoices.style.display = "block";
+                            break;
+                        default:
+                            nextButton.style.display = "block";
+                            break;
+
+                    }
+            }
+
+            function makeChoice(choiceNum) {
+                answered = true;
+                writeToTextbox(choiceText, answerArray[currChoices][choiceNum], displayNextButton)
+            }
+
+            window.onload = function () {
+                destroyScreen();
+                
+            }
+
+            function changePictures() {
+                choices.style.display = "block";
+                choice1.style.backgroundImage = "url(images/" + pictureArray[currChoices][0] + ")"
+                choice2.style.backgroundImage = "url(images/" + pictureArray[currChoices][1] + ")"
+                choice3.style.backgroundImage = "url(images/" + pictureArray[currChoices][2] + ")"
+                text1.innerHTML = choiceArray[currChoices][0];
+                text2.innerHTML = choiceArray[currChoices][1];
+                text3.innerHTML = choiceArray[currChoices][2];
+            }
+ 
+            function lookOut() {
+                textbox.innerHTML = ""; 
+                porthole.style.display = "block";
+                setTimeout(displayNextButton, 6000);
+            }
+
+
+        //on click next button event
+            nextButton.onclick = function () {
+                answered = false;
+                choices.style.display = "none";
+                nextButton.style.display = "none";
+                choiceText.innerHTML = "";
+                choice1.style.filter = "invert(0)";
+                choice2.style.filter = "invert(0)";
+                choice3.style.filter = "invert(0)";
+                currChoices++;
+                console.log("ant :" + ant);
+                console.log("sun :" + sun);
+                console.log("virus :" + virus);
+                console.log("wire :" + wire);
+                console.log("wave :" + wave);
+
+                if (currChoices == 8 || currChoices == 9 || currChoices == 20 || currChoices == 31) {
+                    destroyScreen();
+                } else if (currChoices == 10 || currChoices == 21) {
+                    lookOut();
+                } else if (currChoices == 11 || currChoices == 22) {
+                    porthole.style.display = "none";
+                    destroyScreen();
+                } else {
+                    writeToTextbox(textbox, texts[currChoices], changePictures)
+                    //changePictures();
+                }
+            }
+
+            function writeResult() {
+                writeToTextbox(choiceText, getResult(), displayNextButton); 
+            }
+
+            function fadeOut() {
+                writeToTextbox(choiceText, getResult(), fade);
+            }
+
+            function fade() {
+                whiteScreen.style.visibility = "visible";
+                whiteScreen.style.opacity = "1";
+            }
+
+            function getResult() {
+                if (ant >= sun && ant >= virus && ant >= wire && ant >= wave) {
+                    return "ant. ";
+                } else if (sun >= ant && sun >= virus >= sun >= wire && sun >= wave) {
+                    return "sun. ";
+                } else if (virus >= ant && virus >= sun && virus >= wire && virus >= wave) {
+                    return "virus. ";
+                } else if (wave >= ant && wave >= sun && wave >= virus && wave >= wire) {
+                    return "wave. ";
+                } else if (wire >= ant && wire >= sun && wire >= virus && wire >= wave) {
+                    return "wire. "
+                } else {
+                    return "ant. "
+                }
+            }
+
+            function destroyScreen() {
+                choices.style.display = "none";
+                textbox.innerHTML = "";
+                currInterstitial++;
+                console.log(currInterstitial);
+                if (currInterstitial == 0) {
+                    setTimeout(() => {writeToTextbox(textbox, interstitials[currInterstitial], displayNextButton)}, 500);
+                } else if (currInterstitial == 1 || currInterstitial == 4) {
+                    setTimeout(() => {writeToTextbox(textbox, interstitials[currInterstitial], writeResult)}, 500);
+                } else if (currInterstitial == 2) {
+                    setTimeout(() => {writeToTextbox(textbox, interstitials[currInterstitial], displayNextButton)}, 500); 
+                } else if (currInterstitial == 6) {
+                    setTimeout(() => {writeToTextbox(textbox, interstitials[currInterstitial], fadeOut )}, 500);
+                } else {
+                    setTimeout(() => {writeToTextbox(textbox, interstitials[currInterstitial], displayNextButton)}, 500); 
+                }
+            }
+
+            function doNothing() {
+
+            }
+
+        //functions for hovering over a choice
+            choice1.onmouseenter = function () {
+                if (!answered) {
+                    choice1.style.filter = "invert(100)";
+                }
+            }
+
+            choice2.onmouseenter = function () {
+                if (!answered) {
+                    choice2.style.filter = "invert(100)";
+                }
+            }
+
+            choice3.onmouseenter = function () {
+                if (!answered) {
+                    choice3.style.filter = "invert(100)";
+                }
+            }
+
+            choice1.onmouseleave = function () {
+                if (!answered) {
+                    choicetext.innerHTML = "";
+                    choice1.style.filter = "invert(0)";
+                }
+            }
+
+            choice2.onmouseleave = function () {
+                if (!answered) {
+                    choicetext.innerHTML = "";
+                    choice2.style.filter = "invert(0)";
+                }
+            }
+
+            choice3.onmouseleave = function () {
+                if (!answered) {
+                    choicetext.innerHTML = "";
+                    choice3.style.filter = "invert(0)";
+                }
+            }
+
+        //functions for clicking on a choice
+            choice1.onclick = function () {
+                if (!answered) {
+                    makeChoice(0);
+                    choice1.style.filter = "invert(100)";
+                    recentChoice = choiceArray[currChoices][0];
+                    switch (currChoices) {
+                        case 0:
+                            ant += 2;
+                            wire += 1;
+                            break;
+                        case 1:
+                            wave += 1;
+                            break;
+                        case 2:
+                            virus += 1;
+                            wave += 1;
+                            break;
+                        case 3:
+                            sun += 2;
+                            break;
+                        case 4: 
+                            eye = 0;
+                            break;
+                        case 5:
+                            virus += 2;
+                            wave += 1;
+                            break;
+                        case 6:
+                            ant += 2;
+                            break;
+                        case 7: 
+                            ant += 1;
+                            wire += 1;
+                            break;
+                        case 12: 
+                            wave += 1;
+                            break;
+                        case 13: 
+                            precog = 0;
+                            break;
+                        case 14:
+                            sun += 2;
+                            break;
+                        case 15: 
+                            wire += 2;
+                            break;
+                        case 16: 
+                            ant += 2;
+                            wave += 1;
+                            if (precog == 0) {
+                                sun += 2;
+                            }
+                            break;
+                        case 18:
+                            sun += 2;
+                            break;
+                        case 19: 
+                            wave += 2;
+                            sun += 1;
+                            break;
+                        case 22: 
+                            wire += 2;
+                            break;
+                        case 23:
+                            wave += 1;
+                            virus += 1;
+                            break;
+                        case 24: 
+                            wire += 2;
+                            virus += 1;
+                            break;
+                        case 25: 
+                            ant += 1;
+                            break;
+                        case 26:
+                            if (eye == 0) {
+                                ant += 2;
+                                sun += 1;
+                            }
+                            break;
+                        case 27: 
+                            sun += 2;
+                            break;
+                        default: 
+                            break;
+                    }
+                }
+            }
+
+            choice2.onclick = function () {
+                if (!answered) {
+                    makeChoice(1);
+                    choice2.style.filter = "invert(100)";
+                    recentChoice = choiceArray[currChoices][1];
+                    switch (currChoices) {
+                        case 0:
+                            virus += 2;
+                            wave += 1;
+                            break;
+                        case 1:
+                            ant += 2;
+                            break;
+                        case 2:
+                            virus += 1;
+                            wave += 1;
+                            break;
+                        case 3:
+                            ant += 1;
+                            break;
+                        case 4: 
+                            eye = 1;
+                            break;
+                        case 5: 
+                            ant += 2;
+                            break;
+                        case 6:
+                            wire += 1;
+                            break;
+                        case 7: 
+                            sun += 2;
+                            break;
+                        case 12:
+                            ant += 1;
+                            break;
+                        case 13: 
+                            precog = 1;
+                            break;
+                        case 14:
+                            virus += 1;
+                            wire += 1;
+                            break;
+                        case 15: 
+                            virus += 2;
+                            break;
+                        case 16: 
+                            wire += 2;
+                            if (precog == 1) {
+                                sun += 2;
+                            }
+                            break;
+                        case 18: 
+                            wave += 2;
+                            break;
+                        case 19:
+                            ant += 2;
+                            break;
+                        case 22: 
+                            ant += 2;
+                            sun += 1;
+                            break;
+                        case 23: 
+                            ant += 1;
+                            sun += 1;
+                            break;
+                        case 24: 
+                            ant += 1;
+                            break;
+                        case 25: 
+                            virus += 1;
+                            wave += 1;
+                            sun += 1;
+                            break;
+                        case 26:
+                            if (eye == 0) {
+                                ant += 2;
+                                sun += 1;
+                            }
+                            break;
+                        case 27: 
+                            virus += 3;
+                            break;
+                        default: 
+                            break;
+                    }
+                }
+            }
+
+            choice3.onclick = function () {
+                if (!answered) {
+                    makeChoice(2);
+                    choice3.style.filter = "invert(100)";
+                    recentChoice = choiceArray[currChoices][2];
+                    switch (currChoices) {
+                        case 0:
+                            sun += 2;
+                            virus += 1;
+                            break;
+                        case 1:
+                            wire += 2;
+                            break;
+                        case 2:
+                            sun += 1;
+                            wave += 1;
+                            break;
+                        case 3:
+                            wave += 1;
+                            break;
+                        case 4:
+                            eye = 2;
+                            break;
+                        case 5:
+                            wire += 2;
+                            sun += 1;
+                            break;
+                        case 6:
+                            wave += 2;
+                            sun += 1;
+                            break;
+                        case 7:
+                            virus += 1;
+                            wave += 1;
+                            break;
+                        case 12:
+                            sun += 1;
+                            break;
+                        case 13: 
+                            precog = 2;
+                            break;
+                        case 14:
+                            wave += 2;
+                        case 15: 
+                            ant += 2;
+                            sun += 1;
+                            break;
+                        case 16: 
+                            virus += 2;
+                            sun += 1;
+                            if (precog == 2) {
+                                sun += 2;
+                            }
+                            break;
+                        case 18: 
+                            wire += 2;
+                            virus += 1;
+                            break;
+                        case 19: 
+                            virus += 2;
+                            break;
+                        case 22:
+                            virus += 2;
+                            break;
+                        case 23: 
+                            wire += 2;
+                            break;
+                        case 24: 
+                            wire += 2;
+                            break;
+                        case 25: 
+                            wire += 1;
+                            break;
+                        case 26: 
+                            if (eye == 0) {
+                                ant += 2;
+                                sun += 1;
+                            }
+                            break;
+                        case 27: 
+                            wave += 2;
+                            break;
+                        default: 
+                            break;
+                    }
+                }
+            }
+
+            function writeToTextbox (container, text, callback) {
+                let sentence = "";
+                let i = 0;
+
+                function writeLetter () {
+                    if (i < text.length) {
+                        if (text[i] != '|') {
+                            sentence += text[i];
+                        } else {
+                            sentence += "<br>"
+                        }
+                        container.innerHTML = sentence;
+                        i++;
+                        if (text[i - 1] == '.' && text[i] == ' ') {
+                            setTimeout(writeLetter, textDelay * 7);
+                        } else if (text[i - 1] == '?' && text[i] == ' ') {
+                            setTimeout(writeLetter, textDelay * 7);
+                        } else if (text[i - 1] == ':' && text[i] == ' ') {
+                            sentence += "<br>";
+                            setTimeout(writeLetter, textDelay * 10);
+                        } else if (text[i - 1] == ',' && text[i] == ' ') {
+                            setTimeout(writeLetter, textDelay * 5);
+                        } else if (text[i] == ' ') {
+                            writeLetter();
+                        } else {
+                            setTimeout(writeLetter, textDelay);
+                        }
+                    } else {
+                        setTimeout(() => {callback()}, 500);
+                    }
+                }
+
+                writeLetter();
+            }
+        </script>
+  </body>
+</html>
