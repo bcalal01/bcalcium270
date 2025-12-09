@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Paci-Helios</title>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            background-color: #000000;
+            font-family: monospace;
+            color: rgb(161, 247, 244);
+            font-size: 16px;
+            
+        }
+
+        #block {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000000;
+            opacity: 1;
+            transition: opacity 2s;
+        }
+
+        header {
+            width: fit-content;
+            margin: 80px auto;
+        }
+
+        #intro {
+            margin: 40px 0px;
+        }
+
+        #logo {
+            opacity: 1;
+            transition: opacity 2s;
+            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
+            border-radius: 5px;
+        }
+
+        #trailer {
+            width: fit-content;
+            margin: 50px auto;
+        }
+
+        #trailervid {
+            width: 900px;
+            height: 500px;
+            border: solid #ffffff
+        }
+
+        main {
+            width: 1100px;
+            margin: auto;
+        }
+
+        #playgame {
+            width: 200px;
+            margin: 30px auto;
+            border: solid rgb(161, 247, 244);
+            text-align: center;
+            padding: 20px 0px;
+            transition: all .25s;
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
+            border-radius: 5px;
+        }
+
+        #playcontainer {
+            width: 200px;
+            margin: 100px auto;
+            margin-bottom: 200px;
+        }
+
+        a {
+            color: #a1f7f4;
+            text-decoration: none;
+            width: 200px;
+
+        }
+
+        #playgame:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 30px rgba(244, 143, 177, 0.7);
+            color: rgb(173, 20, 87);
+            border: solid #ffffff;
+        }
+
+        #team {
+            flex-direction: column;
+            margin: 20px 0px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center; 
+            align-items: flex-start;
+            height: fit-content;
+            margin: 50px 0px;
+        }
+
+        .person {
+            width: 400px;
+            text-align: center;
+            margin: 0px 40px;
+        }
+
+        .headshot {
+            width: 200px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="block"></div>
+    <header>
+        <img id="logo" src="images/logo1.png">
+        <div id="intro">
+            A militia of AI-controlled drones has taken over the galaxy. <br> <br>
+            Survive the vicious onslaught and outsmart your enemies. <br> <br>
+            The fate of the universe rests in your hands.
+        </div>
+    </header>
+    <main>
+        <div id="playcontainer">
+            <a target="_blank" href="https://friendlyfire-gamedesign.itch.io/paci-helios">
+                <div id="playgame">
+                    Play Now
+                </div>
+            </a>
+        </div>
+        <h1>Watch the trailer: (trailer tbd)</h1>
+        <div id="trailer">
+            <div id="trailervid"></div>
+        </div>
+        <h1>The crewmates</h1>
+        <div id="team">
+            <div class="row">
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+                <div class="person">
+                    <img class="headshot" src="images/brendanc.jpg">
+                    <h2>Brendan Calalang</h2>
+                    <p>Artist</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const intro = document.getElementById('intro');
+        const logo = document.getElementById('logo');
+        const block = document.getElementById('block')
+
+        const intro_text = "A militia of AI-controlled drones has taken over the galaxy. || Survive the vicious onslaught and outsmart your enemies. || The fate of the universe rests in your hands."
+
+        const textDelay = 40;
+
+        function writeToTextbox (container, text, callback) {
+            let sentence = ""
+        
+            let i = 0;
+
+            function writeLetter () {
+                if (i < text.length) {
+                    if (text[i] != '|') {
+                        sentence += text[i];
+                    } else {
+                        sentence += "<br>"
+                    }
+                    container.innerHTML = sentence;
+                    i++;
+                    if (text[i - 1] == '.') {
+                        setTimeout(writeLetter, textDelay * 7);
+                    } else if (text[i] == ' ') {
+                        writeLetter();
+                    } else {
+                        setTimeout(writeLetter, textDelay);
+                    }
+                } else {
+                    setTimeout(() => {callback()}, 500);
+                }
+            }
+
+            writeLetter();
+        }
+
+        function fade_in_logo() {
+            logo.style.opacity = 1;
+        }
+
+        window.onload = function () {
+            //setTimeout(() => {writeToTextbox(intro, intro_text, fade_in_logo)}, 500);
+            block.style.opacity = 0;
+            setTimeout(() => {block.style.zIndex = -1}, 1500)
+        }
+    
+    </script>
+  </body>
+</html>
