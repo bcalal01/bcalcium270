@@ -4,6 +4,12 @@
     <title>Paci-Helios</title>
     <meta charset="utf-8" />
     <style>
+
+        #megacontainer {
+            opacity: 0;
+            transition: opacity 2s;
+        }
+
         body {
             background-color: #000000;
             font-family: monospace;
@@ -13,7 +19,7 @@
         }
 
         #block {
-            width: 100%;
+            width: 95%;
             height: 100%;
             position: absolute;
             background-color: #000000;
@@ -114,7 +120,7 @@
     </style>
   </head>
   <body>
-    <div id="block"></div>
+    <div id="megacontainer">
     <header>
         <img id="logo" src="images/logo1.png">
         <div id="intro">
@@ -173,10 +179,11 @@
             </div>
         </div>
     </main>
+    </div>
     <script>
         const intro = document.getElementById('intro');
         const logo = document.getElementById('logo');
-        const block = document.getElementById('block')
+        const megacontainer = document.getElementById('megacontainer')
 
         const intro_text = "A militia of AI-controlled drones has taken over the galaxy. || Survive the vicious onslaught and outsmart your enemies. || The fate of the universe rests in your hands."
 
@@ -217,8 +224,7 @@
 
         window.onload = function () {
             //setTimeout(() => {writeToTextbox(intro, intro_text, fade_in_logo)}, 500);
-            block.style.opacity = 0;
-            setTimeout(() => {block.style.zIndex = -1}, 1500)
+            megacontainer.style.opacity = 1;
         }
     
     </script>
