@@ -10,11 +10,16 @@
             transition: opacity 2s;
         }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             background-color: #000000;
             font-family: monospace;
             color: rgb(161, 247, 244);
             font-size: 16px;
+            overflow-x: hidden;
             
         }
 
@@ -51,7 +56,7 @@
         #trailervid {
             width: 900px;
             height: 500px;
-            border: solid #ffffff
+            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
         }
 
         main {
@@ -117,9 +122,96 @@
             box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
         }
 
+        #ship {
+            width: fit-content;
+            transform: rotate(270deg);
+            position: absolute;
+            z-index: -1;
+            left: calc(100vw + 100px);
+            transition: left 5s ease-in;
+            top: 360px;
+            overflow-x: hidden;
+        }
+
+        #shipgif {
+            width: 200px;
+        }
+
+        #gallery {
+            width: 900px;
+            height: 500px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
+            margin: 50px auto;
+            position: relative;
+
+        }
+
+        .galleryimg {
+            width: 900px;
+            height: 500px;
+            opacity: 0;
+            transition: opacity 1s;
+            border-radius: 5px;
+            position: absolute;
+        }
+
+        .gallerybutton {
+            position: absolute;
+            width: fit-content;
+            height: fit-content;
+            top: 40%;
+            margin: 10px;
+            font-size: 50px;
+            color: #ffffff;
+            opacity: 1;
+            transition: opacity .5s;
+        }
+
+        .gallerybutton:hover {
+            opacity: .5;
+            cursor: pointer;
+        }
+
+        #nextbutton {
+            right: 0px;
+        }
+
+        #backbutton {
+            left: 0px;
+        }
+
+        .linkedin {
+            margin: auto;
+        }
+
+        .linkedin img {
+            width: 40px;
+            box-shadow: 0 0 20px rgba(244, 143, 177, 0.7);
+            transition: all .5s;
+            filter: brightness(80%);
+        }
+
+        .linkedin img:hover {
+            box-shadow: 0 0 30px rgba(244, 143, 177, 0.7);
+            filter: brightness(100%);
+        }
+
+        #description {
+            height: 200px;
+            font-size: 20px;
+            padding: 0px 100px;
+            line-height: 35px;
+            text-align: justify;
+            margin: 100px 0px;
+        }
+
     </style>
   </head>
   <body>
+    <div id="ship">
+        <img id="shipgif" src="images/ship.gif">
+    </div>
     <div id="megacontainer">
     <header>
         <img id="logo" src="images/logo1.png">
@@ -141,23 +233,53 @@
         <div id="trailer">
             <div id="trailervid"></div>
         </div>
+        <div id="description">
+            <p>
+                Paci-Helios is a 2D game where you must defeat an AI hivemind and its entourage
+                of fierce, ruthless drones. You, armed with nothing but your wits and agility, 
+                must use the enemies' firepower against themselves&mdash;dodge the barrage of 
+                astral projectiles and get your enemies to hit themselves or each other. Survive
+                the fusillade and defeat the AI invaders to save the galaxy!
+            </p>
+        </div>
+        <h1>Gameplay (images tbd)</h1>
+        <div id="gallery">
+            <img id="gallery1" class="galleryimg" src="images/gallery1.jpg">
+            <img id="gallery2" class="galleryimg" src="images/gallery2.png">
+            <img id="gallery3" class="galleryimg" src="images/gallery3.png">
+            <img id="gallery4" class="galleryimg" src="images/gallery4.png">
+            <img id="gallery5" class="galleryimg" src="images/gallery5.png">
+            <img id="gallery6" class="galleryimg" src="images/gallery6.png">
+            <div id="nextbutton" class="gallerybutton">></div>
+            <div id="backbutton" class="gallerybutton">&lt;</div>
+        </div>
         <h1>The crewmates</h1>
         <div id="team">
             <div class="row">
                 <div class="person">
                     <img class="headshot" src="images/brendanc.jpg">
                     <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
+                    <p>Computer science and art student at Tufts. I worked on our game's art and animation. I also made this website.</p>
+                    <div class="linkedin">
+                        <a target="_blank" href="https://www.linkedin.com/in/brendan-calalang-72915a1a3/">
+                            <img src="images/linkedin.png">
+                        </a>
+                    </div>
                 </div>
                 <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
+                    <img class="headshot" src="images/brendang.jpg">
+                    <h2>Brendan Graziani</h2>
+                    <p>Hi - I’m Brendan! I’m a computer science + math student at Tufts and I was one of the programmers for this game!</p>
+                    <div class="linkedin">
+                        <a target="_blank" href="https://www.linkedin.com/in/brendan-graziani/">
+                            <img src="images/linkedin.png">
+                        </a>
+                    </div>
                 </div>
                 <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
+                    <img class="headshot" src="images/james.jpg">
+                    <h2>James Overholt</h2>
+                    <p>Computer science and physics student at Tufts University. I like making and playing games!</p>
                 </div>
             </div>
             <div class="row">
@@ -178,16 +300,31 @@
                 </div>
             </div>
         </div>
+        <h1></h1>
     </main>
     </div>
     <script>
         const intro = document.getElementById('intro');
         const logo = document.getElementById('logo');
         const megacontainer = document.getElementById('megacontainer')
+        const ship = document.getElementById('ship');
+        const img1 = document.getElementById('gallery1')
+        const img2 = document.getElementById('gallery2')
+        const img3 = document.getElementById('gallery3')
+        const img4 = document.getElementById('gallery4')
+        const img5 = document.getElementById('gallery5')
+        const img6 = document.getElementById('gallery6')
+        const images = [img1, img2, img3, img4, img5, img6]
+
+        const nextbutton = document.getElementById('nextbutton')
+        const backbutton = document.getElementById('backbutton')
 
         const intro_text = "A militia of AI-controlled drones has taken over the galaxy. || Survive the vicious onslaught and outsmart your enemies. || The fate of the universe rests in your hands."
 
         const textDelay = 40;
+
+        let curr_image = 0;
+        let changing = false;
 
         function writeToTextbox (container, text, callback) {
             let sentence = ""
@@ -225,7 +362,43 @@
         window.onload = function () {
             //setTimeout(() => {writeToTextbox(intro, intro_text, fade_in_logo)}, 500);
             megacontainer.style.opacity = 1;
+            ship.style.left = "-200px";
+            img1.style.opacity = 1;
         }
+
+
+
+        function advanceImage() {
+            images[curr_image % 6].style.opacity = 0;
+            curr_image++;
+            images[curr_image % 6].style.opacity = 1;
+        }
+
+        function regressImage() {
+            images[curr_image % 6].style.opacity = 0;
+            curr_image--;
+            if (curr_image < 0) {
+                curr_image = 5;
+            }
+            images[curr_image % 6].style.opacity = 1;
+        }
+
+        nextbutton.onclick = function () {
+            //if (!changing) {
+                changing = true;
+                advanceImage();
+                //setTimeout(() => {changing = false}, 1000)
+            //}
+        }
+
+        backbutton.onclick = function () {
+            //if (!changing) {
+                changing = true;
+                regressImage();
+                //setTimeout(() => {changing = false}, 1000)
+            //}
+        }
+
     
     </script>
   </body>
