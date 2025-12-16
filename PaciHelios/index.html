@@ -1,405 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Paci-Helios</title>
-    <meta charset="utf-8" />
-    <style>
+    <head>
+        <title>The Penguin Company</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="favicon.png" />
 
-        #megacontainer {
-            opacity: 0;
-            transition: opacity 2s;
-        }
+        <style>
+            h1{
+                text-align: center;
+            }
 
-        html {
-            overflow-x: hidden;
-        }
+            p {
+                width: 90%;
+                font-size: 25px;
+                margin: auto;
+                line-height: 1.5;
+            }
 
-        body {
-            background-color: #000000;
-            font-family: monospace;
-            color: rgb(161, 247, 244);
-            font-size: 16px;
-            overflow-x: hidden;
+            h2 {
+                font-size: 40px;
+                margin: 40px 40px 20px 40px;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: bold;
+            }
+
+            .contact-info a{
+                text-decoration: none;
+                color: #D0894B;
+            }
+
+            .contact-info a:hover{
+                color: #D9B45D;
+            }
+
+            form{
+                display: block;
+                text-align: center;
+                margin-left: 10%;
+                width: 80%;
+            }
+
+            form label{
+                width: 90%;
+                font-size: 25px;
+                margin-bottom: 20px;
+                width: 100%;
+                font-weight: bold;
+                display: block;
+            }
+
+            form label input{
+                display: block;
+                margin: 0 auto 0 auto;
+                margin-top: 20px;
+                width: 40%;
+                height: 40px;
+                padding: 5px;
+                font-size: 20px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            form label textarea{
+                display: block;
+                margin: 0 auto 0 auto;
+                margin-top: 20px;
+                width: 60%;
+                height: 400px;
+                padding: 5px;
+                font-size: 15px;
+                font-family: "Ubuntu", sans-serif;
+            }
+
+            input[type=submit] {
+                display: inline-block;
+                background-color: #2B4753;
+                text-align: center;
+                width: 280px;
+                font-size: 30px;
+                color: #ffffff;
+                border-radius: 30px;
+                padding: 12px 0px;
+                margin: 0 auto 0 auto;
+                margin-bottom: 20px;
+                font-family: "Ubuntu", sans-serif;
+                border: 0;
+            }
             
-        }
+            input[type=submit]:hover {
+                color: #D9B45D;
+                background-color: #253542;
+                cursor: pointer;
+            }
 
-        #block {
-            width: 95%;
-            height: 100%;
-            position: absolute;
-            background-color: #000000;
-            opacity: 1;
-            transition: opacity 2s;
-        }
+            .accent-text {
+                color: #ff0000;
+            }
 
-        header {
-            width: fit-content;
-            margin: 80px auto;
-        }
-
-        #intro {
-            margin: 40px 0px;
-        }
-
-        #logo {
-            opacity: 1;
-            transition: opacity 2s;
-            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
-            border-radius: 5px;
-        }
-
-        #trailer {
-            width: fit-content;
-            margin: 50px auto;
-        }
-
-        #trailervid {
-            width: 900px;
-            height: 500px;
-            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
-        }
-
-        main {
-            width: 1100px;
-            margin: auto;
-        }
-
-        #playgame {
-            width: 200px;
-            margin: 30px auto;
-            border: solid rgb(161, 247, 244);
-            text-align: center;
-            padding: 20px 0px;
-            transition: all .25s;
-            font-size: 30px;
-            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
-            border-radius: 5px;
-        }
-
-        #playcontainer {
-            width: 200px;
-            margin: 100px auto;
-            margin-bottom: 200px;
-        }
-
-        a {
-            color: #a1f7f4;
-            text-decoration: none;
-            width: 200px;
-
-        }
-
-        #playgame:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 30px rgba(244, 143, 177, 0.7);
-            color: rgb(173, 20, 87);
-            border: solid #ffffff;
-        }
-
-        #team {
-            flex-direction: column;
-            margin: 20px 0px;
-        }
-
-        .row {
-            display: flex;
-            justify-content: center; 
-            align-items: flex-start;
-            height: fit-content;
-            margin: 50px 0px;
-        }
-
-        .person {
-            width: 400px;
-            text-align: center;
-            margin: 0px 40px;
-        }
-
-        .headshot {
-            width: 200px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
-        }
-
-        #ship {
-            width: fit-content;
-            transform: rotate(270deg);
-            position: absolute;
-            z-index: -1;
-            left: calc(100vw + 100px);
-            transition: left 5s ease-in;
-            top: 360px;
-            overflow-x: hidden;
-        }
-
-        #shipgif {
-            width: 200px;
-        }
-
-        #gallery {
-            width: 900px;
-            height: 500px;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(161, 247, 244, 0.7);
-            margin: 50px auto;
-            position: relative;
-
-        }
-
-        .galleryimg {
-            width: 900px;
-            height: 500px;
-            opacity: 0;
-            transition: opacity 1s;
-            border-radius: 5px;
-            position: absolute;
-        }
-
-        .gallerybutton {
-            position: absolute;
-            width: fit-content;
-            height: fit-content;
-            top: 40%;
-            margin: 10px;
-            font-size: 50px;
-            color: #ffffff;
-            opacity: 1;
-            transition: opacity .5s;
-        }
-
-        .gallerybutton:hover {
-            opacity: .5;
-            cursor: pointer;
-        }
-
-        #nextbutton {
-            right: 0px;
-        }
-
-        #backbutton {
-            left: 0px;
-        }
-
-        .linkedin {
-            margin: auto;
-        }
-
-        .linkedin img {
-            width: 40px;
-            box-shadow: 0 0 20px rgba(244, 143, 177, 0.7);
-            transition: all .5s;
-            filter: brightness(80%);
-        }
-
-        .linkedin img:hover {
-            box-shadow: 0 0 30px rgba(244, 143, 177, 0.7);
-            filter: brightness(100%);
-        }
-
-        #description {
-            height: 200px;
-            font-size: 20px;
-            padding: 0px 100px;
-            line-height: 35px;
-            text-align: justify;
-            margin: 100px 0px;
-        }
-
-    </style>
-  </head>
-  <body>
-    <div id="ship">
-        <img id="shipgif" src="images/ship.gif">
-    </div>
-    <div id="megacontainer">
-    <header>
-        <img id="logo" src="images/logo1.png">
-        <div id="intro">
-            A militia of AI-controlled drones has taken over the galaxy. <br> <br>
-            Survive the vicious onslaught and outsmart your enemies. <br> <br>
-            The fate of the universe rests in your hands.
-        </div>
-    </header>
-    <main>
-        <div id="playcontainer">
-            <a target="_blank" href="https://friendlyfire-gamedesign.itch.io/paci-helios">
-                <div id="playgame">
-                    Play Now
-                </div>
-            </a>
-        </div>
-        <h1>Watch the trailer: (trailer tbd)</h1>
-        <div id="trailer">
-            <div id="trailervid"></div>
-        </div>
-        <div id="description">
-            <p>
-                Paci-Helios is a 2D game where you must defeat an AI hivemind and its entourage
-                of fierce, ruthless drones. You, armed with nothing but your wits and agility, 
-                must use the enemies' firepower against themselves&mdash;dodge the barrage of 
-                astral projectiles and get your enemies to hit themselves or each other. Survive
-                the fusillade and defeat the AI invaders to save the galaxy!
-            </p>
-        </div>
-        <h1>Gameplay (images tbd)</h1>
-        <div id="gallery">
-            <img id="gallery1" class="galleryimg" src="images/gallery1.jpg">
-            <img id="gallery2" class="galleryimg" src="images/gallery2.png">
-            <img id="gallery3" class="galleryimg" src="images/gallery3.png">
-            <img id="gallery4" class="galleryimg" src="images/gallery4.png">
-            <img id="gallery5" class="galleryimg" src="images/gallery5.png">
-            <img id="gallery6" class="galleryimg" src="images/gallery6.png">
-            <div id="nextbutton" class="gallerybutton">></div>
-            <div id="backbutton" class="gallerybutton">&lt;</div>
-        </div>
-        <h1>The crewmates</h1>
-        <div id="team">
-            <div class="row">
-                <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Computer science and art student at Tufts. I worked on our game's art and animation. I also made this website.</p>
-                    <div class="linkedin">
-                        <a target="_blank" href="https://www.linkedin.com/in/brendan-calalang-72915a1a3/">
-                            <img src="images/linkedin.png">
-                        </a>
-                    </div>
-                </div>
-                <div class="person">
-                    <img class="headshot" src="images/brendang.jpg">
-                    <h2>Brendan Graziani</h2>
-                    <p>Hi - I’m Brendan! I’m a computer science + math student at Tufts and I was one of the programmers for this game!</p>
-                    <div class="linkedin">
-                        <a target="_blank" href="https://www.linkedin.com/in/brendan-graziani/">
-                            <img src="images/linkedin.png">
-                        </a>
-                    </div>
-                </div>
-                <div class="person">
-                    <img class="headshot" src="images/james.jpg">
-                    <h2>James Overholt</h2>
-                    <p>Computer science and physics student at Tufts University. I like making and playing games!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
-                </div>
-                <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
-                </div>
-                <div class="person">
-                    <img class="headshot" src="images/brendanc.jpg">
-                    <h2>Brendan Calalang</h2>
-                    <p>Artist</p>
-                </div>
-            </div>
-        </div>
-        <h1></h1>
-    </main>
-    </div>
-    <script>
-        const intro = document.getElementById('intro');
-        const logo = document.getElementById('logo');
-        const megacontainer = document.getElementById('megacontainer')
-        const ship = document.getElementById('ship');
-        const img1 = document.getElementById('gallery1')
-        const img2 = document.getElementById('gallery2')
-        const img3 = document.getElementById('gallery3')
-        const img4 = document.getElementById('gallery4')
-        const img5 = document.getElementById('gallery5')
-        const img6 = document.getElementById('gallery6')
-        const images = [img1, img2, img3, img4, img5, img6]
-
-        const nextbutton = document.getElementById('nextbutton')
-        const backbutton = document.getElementById('backbutton')
-
-        const intro_text = "A militia of AI-controlled drones has taken over the galaxy. || Survive the vicious onslaught and outsmart your enemies. || The fate of the universe rests in your hands."
-
-        const textDelay = 40;
-
-        let curr_image = 0;
-        let changing = false;
-
-        function writeToTextbox (container, text, callback) {
-            let sentence = ""
-        
-            let i = 0;
-
-            function writeLetter () {
-                if (i < text.length) {
-                    if (text[i] != '|') {
-                        sentence += text[i];
-                    } else {
-                        sentence += "<br>"
-                    }
-                    container.innerHTML = sentence;
-                    i++;
-                    if (text[i - 1] == '.') {
-                        setTimeout(writeLetter, textDelay * 7);
-                    } else if (text[i] == ' ') {
-                        writeLetter();
-                    } else {
-                        setTimeout(writeLetter, textDelay);
-                    }
-                } else {
-                    setTimeout(() => {callback()}, 500);
+            @media (max-width:1005px) {
+                form label textarea{
+                    width: 90%;
+                    height: 150px;
                 }
             }
 
-            writeLetter();
-        }
+        </style>
 
-        function fade_in_logo() {
-            logo.style.opacity = 1;
-        }
-
-        window.onload = function () {
-            //setTimeout(() => {writeToTextbox(intro, intro_text, fade_in_logo)}, 500);
-            megacontainer.style.opacity = 1;
-            ship.style.left = "-200px";
-            img1.style.opacity = 1;
-        }
-
-
-
-        function advanceImage() {
-            images[curr_image % 6].style.opacity = 0;
-            curr_image++;
-            images[curr_image % 6].style.opacity = 1;
-        }
-
-        function regressImage() {
-            images[curr_image % 6].style.opacity = 0;
-            curr_image--;
-            if (curr_image < 0) {
-                curr_image = 5;
+        <script>
+            function submissionAlert()
+            {
+                alert("Your message has been submitted! You should receive a response within 3 - 5 business days");
             }
-            images[curr_image % 6].style.opacity = 1;
-        }
-
-        nextbutton.onclick = function () {
-            //if (!changing) {
-                changing = true;
-                advanceImage();
-                //setTimeout(() => {changing = false}, 1000)
-            //}
-        }
-
-        backbutton.onclick = function () {
-            //if (!changing) {
-                changing = true;
-                regressImage();
-                //setTimeout(() => {changing = false}, 1000)
-            //}
-        }
-
+        </script>
+    </head>
     
-    </script>
-  </body>
+    <body>
+        <header>
+            <nav id="nav">
+                <a href="index.html"><img src="logo.png" id="nav-logo-outside" alt="The Penguin Company logo"/></a>
+                <ul>
+                    <li id="list-item-inside">
+                        <a href="index.html"><img src="logo.png" id="nav-logo-inside" alt="The Penguin Company logo"/></a>
+                    </li>
+                    <li id="order-btn"><a href="ordering.html">Order now!</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <h1>Contact Us</h1>
+            <p class="contact-info">Email: <a href="mailto:contact@thepenguin.co">contact@thepenguin.co</a></p>
+            <p class="contact-info">Phone: <a href="tel:555-PENGUIN">555-PENGUIN</a></p>
+            <p class="contact-info">Send us a message!</p>
+            <form id = "contactMessage" onsubmit = "submissionAlert()">
+                <label>
+                    Your email address<span class="accent-text">*</span><br />
+                    <input type="email" name="email" id="email-input" required/>
+                </label>
+                <label>
+                    Your message to us<span class="accent-text">*</span>
+                    <textarea name="msg" id="msg-area" rows="4" cols="30" required></textarea>
+                </label>
+                <input type="submit" id="order-submit" value="Submit Message"/>
+            </form>
+        </main>
+
+        <footer>
+            <nav id="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="penguins.html">About Penguins</a></li>
+                    <li><a href="safety.html">Safety Instructions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
 </html>
