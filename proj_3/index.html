@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
+    <title>Internet Citizen</title>
     <meta charset="utf-8" />
     <style>
         #container {
@@ -108,6 +108,12 @@
             visibility: hidden;
             opacity: 0;
             transition: opacity 5s;
+        }
+
+        @media (max-width:1000px) {
+                body {
+                    transform: scale(.8);
+                }
         }
 
     </style>
@@ -334,7 +340,7 @@
             const porthole = document.getElementById('porthole')
             const whiteScreen = document.getElementById('whitescreen')
 
-            let textDelay = 50;
+            let textDelay = 45;
             let currChoices = -1;  
             let currInterstitial = -1;
             let answered = false;
